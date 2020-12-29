@@ -11,8 +11,7 @@ const createCsrfHandlingInterceptor = (instance: AxiosInstance) => async (config
             }
         })
             .then((res: AxiosResponse) => {
-                const token = res.headers[CSRF_HEADER];
-                config.headers[CSRF_HEADER] = token;
+                config.headers[CSRF_HEADER] = res.headers[CSRF_HEADER];
                 return config;
             })
             .catch(() => {
