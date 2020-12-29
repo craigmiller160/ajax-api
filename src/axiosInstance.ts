@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
-export const createInstance = (baseURL: string) =>
+export const createInstance = (baseURL: string): AxiosInstance =>
     axios.create({
         baseURL,
         withCredentials: true
