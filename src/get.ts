@@ -1,8 +1,7 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 import { RequestConfig } from './types';
-import { handleError } from './utils';
 
-export const get = <R>(instance: AxiosInstance, req: RequestConfig) =>
+export const get = <R>(instance: AxiosInstance, handleError: (error: Error) => void, req: RequestConfig) =>
     instance.get<R>(req.uri, req.config)
         .catch((ex: Error) => {
             handleError(ex);
