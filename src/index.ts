@@ -1,7 +1,7 @@
+import { AxiosInstance } from 'axios';
 import { get } from './get';
 import { createInstance } from './axiosInstance';
 import { ApiConfig } from './types';
-import { AxiosInstance } from 'axios';
 
 // TODO need post, put, delete, and graphql
 // TODO need CSRF interceptor
