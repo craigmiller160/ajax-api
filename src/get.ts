@@ -5,5 +5,5 @@ export const get = <R>(instance: AxiosInstance, handleError: (error: Error) => v
     instance.get<R>(req.uri, req.config)
         .catch((ex: Error) => {
             handleError(ex);
-            throw ex;
+            throw ex; // TODO make sure this fully propagates the error
         });

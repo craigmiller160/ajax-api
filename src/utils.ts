@@ -1,5 +1,7 @@
 import { AxiosError } from 'axios';
 
+// TODO delete this file if unused
+
 // TODO see if it's possible to make this generic
 export const isAxiosError = (ex: any): ex is AxiosError<object> => ex.response !== undefined;
 
