@@ -11,4 +11,5 @@ export interface RequestConfig {
 
 export interface ApiConfig {
     baseURL: string;
+    defaultErrorHandler: (error: Error) => void;
 }

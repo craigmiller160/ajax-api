@@ -10,6 +10,6 @@ import { AxiosInstance } from 'axios';
 export const createApi = (config: ApiConfig) => {
     const instance: AxiosInstance = createInstance(config.baseURL);
     return {
-        get: get(instance, () => {})
+        get: get(instance, config.defaultErrorHandler)
     };
 };
