@@ -22,13 +22,15 @@ const createCsrfHandlingInterceptor = (instance: AxiosInstance) => async (config
     return config;
 };
 
-export const createInstance = (baseURL: string): AxiosInstance => {
+export const createInstance = (baseURL: string, useCsrf: boolean): AxiosInstance => {
     const instance: AxiosInstance = axios.create({
         baseURL,
         withCredentials: true
     });
 
-    instance.interceptors.request.use(createCsrfHandlingInterceptor(instance), (error) => Promise.reject(error));
+    if (useCsrf) {
+        instance.interceptors.request.use(createCsrfHandlingInterceptor(instance), (error) => Promise.reject(error));
+    }
 
     return instance;
 }

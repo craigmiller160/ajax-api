@@ -8,7 +8,7 @@ import { AxiosInstance } from 'axios';
 // TODO need lots of unit tests
 
 export const createApi = (config: ApiConfig) => {
-    const instance: AxiosInstance = createInstance(config.baseURL);
+    const instance: AxiosInstance = createInstance(config.baseURL, config.useCsrf ?? false);
     return {
         get: get(instance, config.defaultErrorHandler)
     };
