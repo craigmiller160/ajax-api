@@ -8,3 +8,7 @@ export interface RequestConfig {
     errorMsg?: string;
     suppressError?: SuppressErrorFn
 }
+
+export interface ApiConfig {
+    baseURL: string;
+}
