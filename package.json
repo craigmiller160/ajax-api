@@ -1,0 +1,12 @@
+{
+  "name": "@craigmiller160/ajax-api",
+  "version": "1.0.0-beta",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@craigmiller160/react-web-config": "^2.6.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
