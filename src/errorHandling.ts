@@ -12,6 +12,7 @@ export const defaultErrorHandlingConfig: ErrorHandlingConfig = {
 
 export const createErrorHandler = (config: ErrorHandlingConfig = defaultErrorHandlingConfig) =>
     (error: Error): void => {
+    // TODO need error message
         if (isAxiosError<object>(error)) {
             error.response.status
         }
