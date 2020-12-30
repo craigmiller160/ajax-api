@@ -16,6 +16,7 @@ const createCsrfHandlingInterceptor = (instance: AxiosInstance) =>
                     return config;
                 })
                 .catch(() => {
+                    // TODO throw special CSRF error
                     throw new Error('Request failed preflight'); // TODO validate this
                 });
         }
