@@ -1,4 +1,4 @@
-
+import { createApi } from '../src';
 
 describe('HTTP GET', () => {
     it('makes successful request', () => {
