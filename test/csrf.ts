@@ -13,5 +13,5 @@ export const prepareCsrfMock = (mockApi: MockAdapter, uri: string) =>
                 {
                     [CSRF_HEADER]: mockCsrfToken
                 }
-            ]
+            ];
         });

@@ -1,7 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
-import { prepareCsrfMock } from './csrf';
 
 const baseURL = '/base';
 const uri = '/foo/bar';
