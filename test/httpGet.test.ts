@@ -1,6 +1,6 @@
-import { createApi } from '../src';
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
+import { createApi } from '../src';
 
 const baseURL = '/base';
 const uri = '/foo/bar';
@@ -31,7 +31,7 @@ describe('HTTP GET', () => {
         mockApi.onGet(uri)
             .reply(500, 'Error');
         try {
-            const res = await api.get({
+            await api.get({
                 uri,
                 errorMsg: message
             });
@@ -53,7 +53,7 @@ describe('HTTP GET', () => {
         mockApi.onGet(uri)
             .reply(500, 'Error');
         try {
-            const res = await api.get({
+            await api.get({
                 uri,
                 errorMsg: message
             });
@@ -72,12 +72,12 @@ describe('HTTP GET', () => {
             baseURL,
             defaultErrorHandler
         });
-        const mockApi = new MockAdapter(api.instance);
+        new MockAdapter(api.instance); // eslint-disable-line no-new
         api.instance.interceptors.request.use((config) => {
             throw new Error('Dying');
         });
         try {
-            const res = await api.get({
+            await api.get({
                 uri,
                 errorMsg: message
             });

@@ -9,7 +9,7 @@ import { createErrorHandler, ErrorHandler } from './core/errorHandling';
 
 export const createApi = (config: ApiConfig) => {
     const instance: AxiosInstance = createInstance(config.baseURL, config.useCsrf ?? false);
-    let errorHandler: ErrorHandler | undefined = undefined;
+    let errorHandler: ErrorHandler | undefined;
     if (config.defaultErrorHandler) {
         errorHandler = createErrorHandler(config.defaultErrorHandler);
     }

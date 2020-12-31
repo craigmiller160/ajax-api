@@ -1,4 +1,3 @@
-
 describe('HTTP PUT', () => {
     it('makes successful request without CSRF', () => {
         throw new Error();
