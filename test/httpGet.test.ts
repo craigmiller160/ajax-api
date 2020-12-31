@@ -45,8 +45,28 @@ describe('HTTP GET', () => {
         throw new Error('Should have been error');
     });
 
-    it('makes request with 500 error, with error handler, with suppress error', () => {
-        throw new Error();
+    it('makes request with 500 error, with error handler, with suppress error', async () => {
+        const api = createApi({
+            baseURL,
+            defaultErrorHandler
+        });
+        const mockApi = new MockAdapter(api.instance);
+        mockApi.onGet(uri)
+            .reply(500, 'Error');
+        try {
+            await api.get({
+                uri,
+                errorMsg: message,
+                suppressError: (ex) => true
+            });
+        } catch (ex) {
+            const axiosError = ex as AxiosError<string>;
+            expect(axiosError.response?.status).toEqual(500);
+            expect(axiosError.response?.data).toEqual('Error');
+            expect(defaultErrorHandler).not.toHaveBeenCalled();
+            return;
+        }
+        throw new Error('Should have been error');
     });
 
     it('makes request with 500 error without error handler', async () => {
