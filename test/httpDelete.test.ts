@@ -1,9 +1,9 @@
 import MockAdapter from 'axios-mock-adapter';
+import { AxiosError } from 'axios';
 import { createApi } from '../src';
 import { mockCsrfToken, prepareCsrfMock } from './csrf';
 import { CSRF_HEADER } from '../src/core/csrfConstants';
 import CsrfError from '../src/core/CsrfError';
-import { AxiosError } from 'axios';
 
 const baseURL = '/base';
 const uri = '/foo/bar';
@@ -53,7 +53,7 @@ describe('HTTP DELETE', () => {
             useCsrf: true,
             defaultErrorHandler
         });
-        const mockApi = new MockAdapter(api.instance);
+        new MockAdapter(api.instance); // eslint-disable-line no-new
         try {
             await api.delete<string>({
                 uri,
