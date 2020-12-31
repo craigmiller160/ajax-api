@@ -22,7 +22,7 @@ describe('HTTP GET', () => {
         expect(res.data).toEqual('Success');
     });
 
-    it('makes request with 500 error and error handling', async () => {
+    it('makes request with 500 error and error handler', async () => {
         const api = createApi({
             baseURL,
             defaultErrorHandler
@@ -45,7 +45,11 @@ describe('HTTP GET', () => {
         throw new Error('Should have been error');
     });
 
-    it('makes request with 500 error without error handling', async () => {
+    it('makes request with 500 error, with error handler, with suppress error', () => {
+        throw new Error();
+    });
+
+    it('makes request with 500 error without error handler', async () => {
         const api = createApi({
             baseURL
         });
@@ -67,7 +71,7 @@ describe('HTTP GET', () => {
         throw new Error('Should have been error');
     });
 
-    it('makes request with generic error and error handling', async () => {
+    it('makes request with generic error and error handler', async () => {
         const api = createApi({
             baseURL,
             defaultErrorHandler

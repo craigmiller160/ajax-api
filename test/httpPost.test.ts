@@ -22,4 +22,8 @@ describe('HTTP POST', () => {
     it('makes request with generic error and error handler', () => {
         throw new Error();
     });
+
+    it('makes request with 500 error, with error handler, with suppress error', () => {
+        throw new Error();
+    });
 });
