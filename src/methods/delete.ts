@@ -1,10 +1,10 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
-import { RequestConfig } from '../types';
 import { ErrorHandler } from '../core/errorHandling';
+import { RequestConfig } from '../types';
 
-export const get = (instance: AxiosInstance, handleError?: ErrorHandler) =>
+export const doDelete = (instance: AxiosInstance, handleError?: ErrorHandler) =>
     <R>(req: RequestConfig): Promise<AxiosResponse<R>> =>
-        instance.get<R>(req.uri, req.config)
+        instance.delete<R>(req.uri, req.config)
             .catch((ex: Error) => {
                 handleError?.(ex, req);
                 throw ex;
