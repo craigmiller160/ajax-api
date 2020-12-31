@@ -3,8 +3,11 @@ import { get } from './methods/get';
 import { createInstance } from './core/axiosInstance';
 import { ApiConfig } from './types';
 import { createErrorHandler, ErrorHandler } from './core/errorHandling';
+import { post } from './methods/post';
+import { put } from './methods/put';
+import { doDelete } from './methods/delete';
 
-// TODO need post, put, delete, and graphql
+// TODO need graphql
 // TODO need lots of unit tests
 
 export const createApi = (config: ApiConfig) => {
@@ -15,6 +18,9 @@ export const createApi = (config: ApiConfig) => {
     }
     return {
         instance,
-        get: get(instance, errorHandler)
+        get: get(instance, errorHandler),
+        post: post(instance, errorHandler),
+        put: put(instance, errorHandler),
+        delete: doDelete(instance, errorHandler)
     };
 };
