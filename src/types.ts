@@ -10,7 +10,7 @@ export interface RequestConfig {
 }
 
 export type ErrorType<R> = Error | AxiosError<R>;
-export type DefaultErrorHandler = <R>(status: number, error: ErrorType<R>) => void;
+export type DefaultErrorHandler = <R>(status: number, error: ErrorType<R>, requestMessage?: string) => void;
 
 export interface ApiConfig {
     baseURL: string;
