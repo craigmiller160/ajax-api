@@ -8,9 +8,11 @@ export type ErrorHandler = (error: Error, config: RequestConfig) => void;
 
 export const createErrorHandler = (errorHandler: DefaultErrorHandler) =>
     (error: Error, config: RequestConfig): void => {
-        let status = 0;
-        if (isAxiosError<any>(error)) {
-            status = error?.response?.status ?? 0;
+        if (!config.suppressError?.(error)) {
+            let status = 0;
+            if (isAxiosError<any>(error)) {
+                status = error?.response?.status ?? 0;
+            }
+            errorHandler(status, error, config.errorMsg);
         }
-        errorHandler(status, error, config.errorMsg);
     };
