@@ -11,6 +11,20 @@ const message = 'The message';
 describe('HTTP DELETE', () => {
     it('makes successful request without CSRF', async () => {
         const api = createApi({
+            baseURL
+        });
+        const mockApi = new MockAdapter(api.instance);
+        mockApi.onDelete(uri)
+            .reply(200, 'Success');
+        const res = await api.delete<string>({
+            uri
+        });
+        expect(res.status).toEqual(200);
+        expect(res.data).toEqual('Success');
+    });
+
+    it('makes successful request with CSRF', async () => {
+        const api = createApi({
             baseURL,
             useCsrf: true
         });
@@ -29,10 +43,6 @@ describe('HTTP DELETE', () => {
         });
         expect(res.status).toEqual(200);
         expect(res.data).toEqual('Success');
-    });
-
-    it('makes successful request with CSRF', () => {
-        throw new Error();
     });
 
     it('has error with CSRF preflight with error handler', () => {
