@@ -1,6 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
+import { prepareCsrfMock } from './csrf';
 
 const baseURL = '/base';
 const uri = '/foo/bar';
@@ -15,7 +16,7 @@ describe('HTTP GET', () => {
         const mockApi = new MockAdapter(api.instance);
         mockApi.onGet(uri)
             .reply(200, 'Success');
-        const res = await api.get({
+        const res = await api.get<string>({
             uri
         });
         expect(res.status).toEqual(200);
@@ -31,7 +32,7 @@ describe('HTTP GET', () => {
         mockApi.onGet(uri)
             .reply(500, 'Error');
         try {
-            await api.get({
+            await api.get<string>({
                 uri,
                 errorMsg: message
             });
@@ -54,7 +55,7 @@ describe('HTTP GET', () => {
         mockApi.onGet(uri)
             .reply(500, 'Error');
         try {
-            await api.get({
+            await api.get<string>({
                 uri,
                 errorMsg: message,
                 suppressError: (ex) => true
@@ -77,7 +78,7 @@ describe('HTTP GET', () => {
         mockApi.onGet(uri)
             .reply(500, 'Error');
         try {
-            await api.get({
+            await api.get<string>({
                 uri,
                 errorMsg: message
             });
@@ -101,7 +102,7 @@ describe('HTTP GET', () => {
             throw new Error('Dying');
         });
         try {
-            await api.get({
+            await api.get<string>({
                 uri,
                 errorMsg: message
             });
