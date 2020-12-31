@@ -9,6 +9,10 @@ export interface RequestConfig {
     suppressError?: SuppressErrorFn;
 }
 
+export interface RequestBodyConfig<B> extends RequestConfig {
+    body?: B;
+}
+
 export type ErrorType<R> = Error | AxiosError<R>;
 export type DefaultErrorHandler = <R>(status: number, error: ErrorType<R>, requestMessage?: string) => void;
 
