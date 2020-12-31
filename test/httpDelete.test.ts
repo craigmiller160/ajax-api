@@ -1,6 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 import { createApi } from '../src';
 import { mockCsrfToken, prepareCsrfMock } from './csrf';
+import { CSRF_HEADER } from '../src/core/csrfConstants';
 
 const baseURL = '/base';
 const uri = '/foo/bar';
@@ -17,7 +18,7 @@ describe('HTTP DELETE', () => {
         prepareCsrfMock(mockApi, uri);
         mockApi.onDelete(uri)
             .reply((config) => {
-                expect(config.headers['x-csrf-token']).toEqual(mockCsrfToken);
+                expect(config.headers[CSRF_HEADER]).toEqual(mockCsrfToken);
                 return [
                     200,
                     'Success'

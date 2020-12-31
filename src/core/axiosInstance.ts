@@ -1,8 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import CsrfError from './CsrfError';
-
-const CSRF_METHODS = [ 'post', 'put', 'delete' ];
-const CSRF_HEADER = 'x-csrf-token';
+import { CSRF_HEADER, CSRF_METHODS } from './csrfConstants';
 
 const createCsrfHandlingInterceptor = (instance: AxiosInstance) =>
     async (config: AxiosRequestConfig): Promise<AxiosRequestConfig> => {
