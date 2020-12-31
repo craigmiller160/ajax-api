@@ -1,19 +1,17 @@
 import { AxiosError } from 'axios';
-import { ErrorHandlingConfig } from './types';
-
-// TODO delete this file if unused
+import { DefaultErrorHandler, RequestConfig } from './types';
 
 export const isAxiosError = <R>(ex: any): ex is AxiosError<R> =>
     ex.response !== undefined && ex.response !== null;
 
-export const defaultErrorHandlingConfig: ErrorHandlingConfig = {
-    defaultErrorHandler: (e) => {}
-};
+export type ErrorHandler = (error: Error, config: RequestConfig) => void;
 
-export const createErrorHandler = (config: ErrorHandlingConfig = defaultErrorHandlingConfig) =>
-    (error: Error): void => {
-    // TODO need error message
-        if (isAxiosError<object>(error)) {
-            error.response.status
+export const createErrorHandler = (errorHandler: DefaultErrorHandler) =>
+    (error: Error, config: RequestConfig): void => {
+        // TODO need error message
+        let status = 0;
+        if (isAxiosError<any>(error)) {
+            status = error?.response?.status ?? 0;
         }
+        errorHandler(status, error);
     };
