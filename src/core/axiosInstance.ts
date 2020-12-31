@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import CsrfError from './CsrfError';
 
 const CSRF_METHODS = [ 'post', 'put', 'delete' ];
 const CSRF_HEADER = 'x-csrf-token';
@@ -15,9 +16,8 @@ const createCsrfHandlingInterceptor = (instance: AxiosInstance) =>
                     config.headers[CSRF_HEADER] = res.headers[CSRF_HEADER]; // eslint-disable-line no-param-reassign
                     return config;
                 })
-                .catch(() => {
-                    // TODO throw special CSRF error
-                    throw new Error('Request failed preflight'); // TODO validate this
+                .catch((ex) => {
+                    throw new CsrfError('Request failed preflight', ex); // TODO validate this
                 });
         }
         return config;
