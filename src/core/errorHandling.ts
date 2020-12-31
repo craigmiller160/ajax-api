@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { DefaultErrorHandler, RequestConfig } from './types';
+import { DefaultErrorHandler, RequestConfig } from '../types';
 
 export const isAxiosError = <R>(ex: any): ex is AxiosError<R> =>
     ex.response !== undefined && ex.response !== null;

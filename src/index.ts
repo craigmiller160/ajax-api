@@ -1,8 +1,8 @@
 import { AxiosInstance } from 'axios';
-import { get } from './get';
-import { createInstance } from './axiosInstance';
+import { get } from './methods/get';
+import { createInstance } from './core/axiosInstance';
 import { ApiConfig } from './types';
-import { createErrorHandler, ErrorHandler } from './errorHandling';
+import { createErrorHandler, ErrorHandler } from './core/errorHandling';
 
 // TODO need post, put, delete, and graphql
 // TODO need lots of unit tests
