@@ -6,7 +6,6 @@ import { createErrorHandler, ErrorHandler } from './core/errorHandling';
 
 // TODO need post, put, delete, and graphql
 // TODO need lots of unit tests
-// TODO integrate multiple error handlers (401, standard)
 
 export const createApi = (config: ApiConfig) => {
     const instance: AxiosInstance = createInstance(config.baseURL, config.useCsrf ?? false);
