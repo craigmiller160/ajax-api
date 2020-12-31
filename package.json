@@ -8,7 +8,13 @@
     "build": "web-config-scripts lint && web-config-scripts test && web-config-scripts buildTSLib"
   },
   "devDependencies": {
-    "@craigmiller160/react-web-config": "^2.6.2"
+    "@craigmiller160/react-web-config": "^2.6.2",
+    "@types/axios-mock-adapter": "^1.10.0",
+    "@types/react": "^16.9.10",
+    "@types/react-dom": "^16.9.10",
+    "axios-mock-adapter": "^1.19.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "dependencies": {
     "axios": "^0.21.1"

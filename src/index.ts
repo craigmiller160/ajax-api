@@ -15,6 +15,7 @@ export const createApi = (config: ApiConfig) => {
         errorHandler = createErrorHandler(config.defaultErrorHandler);
     }
     return {
+        instance,
         get: get(instance, errorHandler)
     };
 };
