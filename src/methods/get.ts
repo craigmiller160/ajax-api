@@ -9,5 +9,5 @@ export const get = <R>(instance: AxiosInstance, handleError?: ErrorHandler) =>
                 if (!req.suppressError?.(ex)) {
                     handleError?.(ex, req);
                 }
-                throw ex; // TODO make sure this fully propagates the error
+                throw ex;
             });
