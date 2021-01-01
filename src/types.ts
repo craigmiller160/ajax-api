@@ -30,11 +30,11 @@ export interface ApiConfig {
     defaultErrorHandler?: DefaultErrorHandler;
 }
 
-export interface GraphQLError {
+export interface GraphQLResponseError {
     message: string;
 }
 
 export interface GraphQLQueryResponse<R> {
     data: R;
-    errors: Array<GraphQLError>;
+    errors: Array<GraphQLResponseError>;
 }
