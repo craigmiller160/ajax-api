@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import { createApi } from '../src';
 import { mockCsrfToken, prepareCsrfMock } from './csrf';
 import { CSRF_HEADER } from '../src/core/csrfConstants';
-import CsrfError from '../src/core/CsrfError';
+import CsrfError from '../src/errors/CsrfError';
 
 const baseURL = '/base';
 const uri = '/foo/bar';
