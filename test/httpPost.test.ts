@@ -1,9 +1,9 @@
 import MockAdapter from 'axios-mock-adapter';
+import { AxiosError } from 'axios';
 import { createApi } from '../src';
 import { mockCsrfToken, prepareCsrfMock } from './csrf';
 import { CSRF_HEADER } from '../src/core/csrfConstants';
 import CsrfError from '../src/core/CsrfError';
-import { AxiosError } from 'axios';
 
 const baseURL = '/base';
 const uri = '/foo/bar';
@@ -23,7 +23,7 @@ describe('HTTP POST', () => {
         const mockApi = new MockAdapter(api.instance);
         mockApi.onPost(uri, body)
             .reply(200, 'Success');
-        const res = await api.post<BodyType,string>({
+        const res = await api.post<BodyType, string>({
             uri,
             body
         });
@@ -46,7 +46,7 @@ describe('HTTP POST', () => {
                     'Success'
                 ];
             });
-        const res = await api.post<BodyType,string>({
+        const res = await api.post<BodyType, string>({
             uri,
             body
         });
@@ -62,7 +62,7 @@ describe('HTTP POST', () => {
         });
         new MockAdapter(api.instance); // eslint-disable-line no-new
         try {
-            await api.post<BodyType,string>({
+            await api.post<BodyType, string>({
                 uri,
                 body,
                 errorMsg: message
@@ -87,7 +87,7 @@ describe('HTTP POST', () => {
         mockApi.onPost(uri, body)
             .reply(500, 'Error');
         try {
-            await api.post<BodyType,string>({
+            await api.post<BodyType, string>({
                 uri,
                 body,
                 errorMsg: message
@@ -110,7 +110,7 @@ describe('HTTP POST', () => {
         mockApi.onPost(uri, body)
             .reply(500, 'Error');
         try {
-            await api.post<BodyType,string>({
+            await api.post<BodyType, string>({
                 uri,
                 body,
                 errorMsg: message
@@ -135,7 +135,7 @@ describe('HTTP POST', () => {
             throw new Error('Dying');
         });
         try {
-            await api.post<BodyType,string>({
+            await api.post<BodyType, string>({
                 uri,
                 body,
                 errorMsg: message
@@ -158,7 +158,7 @@ describe('HTTP POST', () => {
         mockApi.onPost(uri, body)
             .reply(500, 'Error');
         try {
-            await api.post<BodyType,string>({
+            await api.post<BodyType, string>({
                 uri,
                 body,
                 errorMsg: message,
