@@ -21,7 +21,7 @@ yarn add @craigmiller160/ajax-api
 
 ## User Guide
 
-1. Creating API Instance
+<a href="./docs/creatingApiInstance.md">1. Creating API Instance</a>
 1. Error Handling
 1. CSRF Tokens
 1. GraphQL
