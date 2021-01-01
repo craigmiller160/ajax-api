@@ -25,7 +25,7 @@ export const graphql = (instance: AxiosInstance, handleError?: ErrorHandler) =>
 
         return instance.post<GraphQLQueryResponse<R>>(uri, req.payload, config)
             .then((res) => {
-                if (res.data.errors?.length ?? 0 > 0) {
+                if ((res.data.errors?.length ?? 0) > 0) {
                     const message = getGraphQLErrorMessage(res.data);
                     throw new GraphQLError(message, res);
                 }

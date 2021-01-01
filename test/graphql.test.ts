@@ -1,10 +1,10 @@
 import MockAdapter from 'axios-mock-adapter';
+import { AxiosError } from 'axios';
 import { createApi } from '../src';
 import { GraphQLQueryResponse } from '../src/types';
 import { mockCsrfToken, prepareCsrfMock } from './csrf';
 import { CSRF_HEADER } from '../src/utils/csrfConstants';
 import CsrfError from '../src/errors/CsrfError';
-import { AxiosError } from 'axios';
 import GraphQLError from '../src/errors/GraphQLError';
 
 const baseURL = '/base';
@@ -88,7 +88,7 @@ describe('graphql', () => {
                 return [
                     200,
                     successResponse
-                ]
+                ];
             });
         const res = await api.graphql<ResponseDataType>({
             payload
@@ -105,7 +105,7 @@ describe('graphql', () => {
         });
         new MockAdapter(api.instance); // eslint-disable-line no-new
         try {
-            const res = await api.graphql<ResponseDataType>({
+            await api.graphql<ResponseDataType>({
                 payload,
                 errorMsg: message
             });
@@ -224,7 +224,7 @@ describe('graphql', () => {
             await api.graphql<ResponseDataType>({
                 payload,
                 errorMsg: message
-            })
+            });
         } catch (ex) {
             expect(ex).toBeInstanceOf(GraphQLError);
             expect(ex.message).toEqual(graphqlErrorMessage);
