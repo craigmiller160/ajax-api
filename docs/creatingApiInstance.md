@@ -8,7 +8,7 @@ import { createApi, AjaxApi } from '@craigmiller160/ajax-api';
 const defaultApi: AjaxApi = createApi();
 
 const apiWithOptions: AjaxApi = createApi({
-    // Options
+    // ApiConfig Options
 });
 ```
 
