@@ -8,7 +8,6 @@ import { put } from './methods/put';
 import { doDelete } from './methods/delete';
 
 // TODO need graphql
-// TODO need lots of unit tests
 
 export const createApi = (config: ApiConfig) => {
     const instance: AxiosInstance = createInstance(config.baseURL, config.useCsrf ?? false);
