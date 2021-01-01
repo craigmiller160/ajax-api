@@ -5,6 +5,7 @@ import { mockCsrfToken, prepareCsrfMock } from './csrf';
 import { CSRF_HEADER } from '../src/utils/csrfConstants';
 import CsrfError from '../src/errors/CsrfError';
 import { AxiosError } from 'axios';
+import GraphQLError from '../src/errors/GraphQLError';
 
 const baseURL = '/base';
 const graphqlUri = '/graphql';
@@ -30,6 +31,18 @@ type ResponseDataType = typeof responseData;
 const successResponse: GraphQLQueryResponse<ResponseDataType> = {
     data: responseData
 };
+const errorResponse: GraphQLQueryResponse<ResponseDataType> = {
+    data: null,
+    errors: [
+        {
+            message: 'First error'
+        },
+        {
+            message: 'Second error'
+        }
+    ]
+};
+const graphqlErrorMessage = 'First error\nSecond error';
 
 describe('graphql', () => {
     it('makes successful request without CSRF', async () => {
@@ -199,7 +212,28 @@ describe('graphql', () => {
         throw new Error('Should have been error');
     });
 
-    it('makes request with GraphQL Error and error handler', () => {
-        throw new Error();
+    it('makes request with GraphQL Error and error handler', async () => {
+        const api = createApi({
+            baseURL,
+            defaultErrorHandler
+        });
+        const mockApi = new MockAdapter(api.instance);
+        mockApi.onPost(graphqlUri, payload)
+            .reply(200, errorResponse);
+        try {
+            await api.graphql<ResponseDataType>({
+                payload,
+                errorMsg: message
+            })
+        } catch (ex) {
+            expect(ex).toBeInstanceOf(GraphQLError);
+            expect(ex.message).toEqual(graphqlErrorMessage);
+            const res = (ex as GraphQLError).response;
+            expect(res.status).toEqual(200);
+            expect(res.data).toEqual(errorResponse);
+            expect(defaultErrorHandler).toHaveBeenCalledWith(200, ex, message);
+            return;
+        }
+        throw new Error('Should have been error');
     });
 });
