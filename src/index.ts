@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 import { get } from './methods/get';
 import { createInstance } from './core/axiosInstance';
-import { ApiConfig } from './types';
+import { AjaxApi, ApiConfig } from './types';
 import { createErrorHandler, ErrorHandler } from './core/errorHandling';
 import { post } from './methods/post';
 import { put } from './methods/put';
@@ -12,10 +12,12 @@ export { default as GraphQLError } from './errors/GraphQLError';
 export { default as CsrfError } from './errors/CsrfError';
 export * from './types';
 
-export const createApi = (config: ApiConfig) => {
-    const instance: AxiosInstance = createInstance(config.baseURL, config.useCsrf ?? false);
+export const createApi = (config?: ApiConfig): AjaxApi => {
+    const baseURL = config?.baseURL ?? '/';
+    const useCsrf = config?.useCsrf ?? false;
+    const instance: AxiosInstance = createInstance(baseURL, useCsrf);
     let errorHandler: ErrorHandler | undefined;
-    if (config.defaultErrorHandler) {
+    if (config?.defaultErrorHandler) {
         errorHandler = createErrorHandler(config.defaultErrorHandler);
     }
     return {

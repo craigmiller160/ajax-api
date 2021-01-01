@@ -1,4 +1,4 @@
-import { AxiosError, AxiosRequestConfig } from 'axios';
+import { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export type SuppressErrorFn = (ex: Error) => Boolean;
 
@@ -25,7 +25,7 @@ export type ErrorType<R> = Error | AxiosError<R>;
 export type DefaultErrorHandler = <R>(status: number, error: ErrorType<R>, requestMessage?: string) => void;
 
 export interface ApiConfig {
-    baseURL: string;
+    baseURL?: string;
     useCsrf?: boolean;
     defaultErrorHandler?: DefaultErrorHandler;
 }
@@ -37,4 +37,13 @@ export interface GraphQLResponseError {
 export interface GraphQLQueryResponse<R> {
     data: R | null;
     errors?: Array<GraphQLResponseError>;
+}
+
+export interface AjaxApi {
+    instance: AxiosInstance;
+    get: <R>(req: UriRequestConfig) => Promise<AxiosResponse<R>>;
+    post: <B,R>(req: UriBodyRequestConfig<B>) => Promise<AxiosResponse<R>>;
+    put: <B,R>(req: UriBodyRequestConfig<B>) => Promise<AxiosResponse<R>>;
+    delete: <R>(req: UriRequestConfig) => Promise<AxiosResponse<R>>;
+    graphql: <R>(req: GraphQLRequestConfig) => Promise<AxiosResponse<GraphQLQueryResponse<R>>>;
 }
