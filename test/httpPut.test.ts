@@ -137,6 +137,7 @@ describe('HTTP PUT', () => {
         try {
             await api.put<BodyType,string>({
                 uri,
+                body,
                 errorMsg: message
             });
         } catch (ex) {
