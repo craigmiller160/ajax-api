@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import CsrfError from '../errors/CsrfError';
-import { CSRF_HEADER, CSRF_METHODS } from './csrfConstants';
+import { CSRF_HEADER, CSRF_METHODS } from '../utils/csrfConstants';
 
 const createCsrfHandlingInterceptor = (instance: AxiosInstance) =>
     async (config: AxiosRequestConfig): Promise<AxiosRequestConfig> => {

@@ -1,5 +1,5 @@
 import MockAdapter from 'axios-mock-adapter';
-import { CSRF_HEADER } from '../src/core/csrfConstants';
+import { CSRF_HEADER } from '../src/utils/csrfConstants';
 
 export const mockCsrfToken = 'ABCDEFG';
 

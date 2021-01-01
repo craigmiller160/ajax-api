@@ -2,10 +2,8 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { ErrorHandler } from '../core/errorHandling';
 import { GraphQLQueryResponse, GraphQLRequestConfig } from '../types';
 import GraphQLError from '../errors/GraphQLError';
-
-// TODO create graphql constants file
-
-const DEFAULT_GRAPHQL_URI = '/graphql';
+import { CONTENT_TYPE_HEADER } from '../utils/commonConstants';
+import { DEFAULT_GRAPHQL_URI, GRAPHQL_CONTENT_TYPE } from '../utils/graphqlConstants';
 
 const getGraphQLErrorMessage = <R> (data: GraphQLQueryResponse<R>): string =>
     data.errors
@@ -19,7 +17,7 @@ export const graphql = (instance: AxiosInstance, handleError?: ErrorHandler) =>
             ...(req.config ?? {}),
             headers: {
                 ...(req.config?.headers ?? {}),
-                'content-type': 'application/graphql'
+                [CONTENT_TYPE_HEADER]: GRAPHQL_CONTENT_TYPE
             }
         };
 
@@ -34,7 +32,7 @@ export const graphql = (instance: AxiosInstance, handleError?: ErrorHandler) =>
                 return res;
             })
             .catch((ex: Error) => {
-                handleError?.(ex, req); // TODO unify this with other request interfaces
+                handleError?.(ex, req);
                 throw ex;
             });
     };

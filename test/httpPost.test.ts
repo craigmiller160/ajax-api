@@ -2,7 +2,7 @@ import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
 import { mockCsrfToken, prepareCsrfMock } from './csrf';
-import { CSRF_HEADER } from '../src/core/csrfConstants';
+import { CSRF_HEADER } from '../src/utils/csrfConstants';
 import CsrfError from '../src/errors/CsrfError';
 
 const baseURL = '/base';
