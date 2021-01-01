@@ -17,12 +17,10 @@ const apiWithOptions: AjaxApi = createApi({
 The options for `createApi` can be found in the `ApiConfig` type. All options are optional, if none are provided defaults are set.
 
 ```
-import { AxiosError } from 'axios';
-
 export interface ApiConfig {
     baseURL?: string;
     useCsrf?: boolean;
-    defaultErrorHandler?: <R>(status: number, error: Error | AxiosError<R>, requestMessage?: string) => void;
+    defaultErrorHandler?: (status: number, error: Error, requestMessage?: string) => void;
 }
 ```
 
