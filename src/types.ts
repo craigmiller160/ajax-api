@@ -2,22 +2,23 @@ import { AxiosError, AxiosRequestConfig } from 'axios';
 
 export type SuppressErrorFn = (ex: Error) => Boolean;
 
-export interface RequestConfig {
-    uri: string;
+export interface BaseRequestConfig {
     config?: AxiosRequestConfig;
     errorMsg?: string;
     suppressError?: SuppressErrorFn;
 }
 
-export interface RequestBodyConfig<B> extends RequestConfig {
+export interface UriRequestConfig extends BaseRequestConfig {
+    uri: string;
+}
+
+export interface UriBodyRequestConfig<B> extends UriRequestConfig {
     body?: B;
 }
 
-export interface GraphQLRequest {
+export interface GraphQLRequestConfig extends BaseRequestConfig {
     payload: string;
-    errorMsg?: string;
-    suppressError?: SuppressErrorFn;
-    config?: AxiosRequestConfig;
+    overrideUri?: string;
 }
 
 export type ErrorType<R> = Error | AxiosError<R>;

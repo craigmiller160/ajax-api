@@ -1,9 +1,13 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { ErrorHandler } from '../core/errorHandling';
-import { GraphQLQueryResponse, GraphQLRequest } from '../types';
+import { GraphQLQueryResponse, GraphQLRequestConfig } from '../types';
+
+// TODO create graphql constants file
+
+const DEFAULT_GRAPHQL_URI = '/graphql';
 
 export const graphql = (instance: AxiosInstance, handleError?: ErrorHandler) =>
-    <R>(req: GraphQLRequest): Promise<AxiosResponse<GraphQLQueryResponse<R>>> => {
+    <R>(req: GraphQLRequestConfig): Promise<AxiosResponse<GraphQLQueryResponse<R>>> => {
         const config: AxiosRequestConfig = {
             ...(req.config ?? {}),
             headers: {
@@ -12,8 +16,9 @@ export const graphql = (instance: AxiosInstance, handleError?: ErrorHandler) =>
             }
         };
 
-        // TODO allow for overriding URI
-        return instance.post<GraphQLQueryResponse<R>>('/graphql', req.payload, config)
+        const uri = req.overrideUri ?? DEFAULT_GRAPHQL_URI;
+
+        return instance.post<GraphQLQueryResponse<R>>(uri, req.payload, config)
             .then((res) => {
                 // TODO check for error
                 return res;
