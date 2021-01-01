@@ -13,6 +13,13 @@ export interface RequestBodyConfig<B> extends RequestConfig {
     body?: B;
 }
 
+export interface GraphQLRequest {
+    payload: string;
+    errorMsg?: string;
+    suppressError?: SuppressErrorFn;
+    config?: AxiosRequestConfig;
+}
+
 export type ErrorType<R> = Error | AxiosError<R>;
 export type DefaultErrorHandler = <R>(status: number, error: ErrorType<R>, requestMessage?: string) => void;
 
