@@ -28,3 +28,12 @@ export interface ApiConfig {
     useCsrf?: boolean;
     defaultErrorHandler?: DefaultErrorHandler;
 }
+
+export interface GraphQLError {
+    message: string;
+}
+
+export interface GraphQLQueryResponse<R> {
+    data: R;
+    errors: Array<GraphQLError>;
+}
