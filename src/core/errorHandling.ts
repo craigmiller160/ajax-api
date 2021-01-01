@@ -7,7 +7,7 @@ export const isAxiosError = <R>(ex: any): ex is AxiosError<R> =>
 export type ErrorHandler = (error: Error, config: BaseRequestConfig) => void;
 
 export const createErrorHandler = (errorHandler: DefaultErrorHandler) =>
-    (error: Error, config: UriRequestConfig): void => {
+    (error: Error, config: BaseRequestConfig): void => {
         if (!config.suppressError?.(error)) {
             let status = 0;
             if (isAxiosError<any>(error)) {

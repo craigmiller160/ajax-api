@@ -6,8 +6,8 @@ import { createErrorHandler, ErrorHandler } from './core/errorHandling';
 import { post } from './methods/post';
 import { put } from './methods/put';
 import { doDelete } from './methods/delete';
-
-// TODO need graphql
+export { default as GraphQLError } from './errors/GraphQLError';
+export { default as CsrfError } from './errors/CsrfError';
 
 export const createApi = (config: ApiConfig) => {
     const instance: AxiosInstance = createInstance(config.baseURL, config.useCsrf ?? false);
