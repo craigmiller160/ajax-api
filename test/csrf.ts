@@ -1,6 +1,8 @@
 import MockAdapter from 'axios-mock-adapter';
 import { CSRF_HEADER } from '../src/utils/csrfConstants';
 
+// TODO replace these with test-utils exports
+
 export const mockCsrfToken = 'ABCDEFG';
 
 export const prepareCsrfMock = (mockApi: MockAdapter, uri: string) =>
