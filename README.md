@@ -35,7 +35,7 @@ yarn add @craigmiller160/ajax-api
         <a>CSRF Tokens</a>    
     </li>
     <li>
-        <a>GraphQL</a>
+        <a href="./docs/graphql.md">GraphQL</a>
     </li>
     <li>
         <a>Testing</a>
