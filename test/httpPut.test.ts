@@ -1,9 +1,9 @@
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
-import { mockCsrfToken, prepareCsrfMock } from './csrf';
 import { CSRF_HEADER } from '../src/utils/csrfConstants';
 import CsrfError from '../src/errors/CsrfError';
+import { mockCsrfPreflight, mockCsrfToken } from '../lib/test-utils';
 
 const baseURL = '/base';
 const uri = '/foo/bar';
@@ -37,7 +37,7 @@ describe('HTTP PUT', () => {
             useCsrf: true
         });
         const mockApi = new MockAdapter(api.instance);
-        prepareCsrfMock(mockApi, uri);
+        mockCsrfPreflight(mockApi, uri);
         mockApi.onPut(uri, body)
             .reply((config) => {
                 expect(config.headers[CSRF_HEADER]).toEqual(mockCsrfToken);
