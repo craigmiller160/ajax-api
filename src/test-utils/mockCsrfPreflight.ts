@@ -3,8 +3,8 @@ import { CSRF_HEADER } from '../utils/csrfConstants';
 
 export const mockCsrfToken = 'ABCDEFG';
 
-export const mockCsrfPreflight = (mockApi: MockAdapter, uri: string, body?: any) =>
-    mockApi.onOptions(uri, body)
+export const mockCsrfPreflight = (mockApi: MockAdapter, uri: string) =>
+    mockApi.onOptions(uri)
         .reply((config) => {
             expect(config.headers[CSRF_HEADER]).toEqual('fetch');
             return [
