@@ -2,10 +2,10 @@ import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
 import { GraphQLQueryResponse } from '../src/types';
-import { mockCsrfToken, prepareCsrfMock } from './csrf';
 import { CSRF_HEADER } from '../src/utils/csrfConstants';
 import CsrfError from '../src/errors/CsrfError';
 import GraphQLError from '../src/errors/GraphQLError';
+import { mockCsrfPreflight, mockCsrfToken } from '../lib/test-utils';
 
 const baseURL = '/base';
 const graphqlUri = '/graphql';
@@ -81,7 +81,7 @@ describe('graphql', () => {
             useCsrf: true
         });
         const mockApi = new MockAdapter(api.instance);
-        prepareCsrfMock(mockApi, graphqlUri);
+        mockCsrfPreflight(mockApi, graphqlUri);
         mockApi.onPost(graphqlUri, payload)
             .reply((config) => {
                 expect(config.headers[CSRF_HEADER]).toEqual(mockCsrfToken);
