@@ -32,7 +32,7 @@ yarn add @craigmiller160/ajax-api
         <a href="./docs/errorHandling.md">Error Handling</a>
     </li>
     <li>
-        <a>CSRF Tokens</a>    
+        <a href="./docs/csrf.md">CSRF Tokens</a>    
     </li>
     <li>
         <a href="./docs/graphql.md">GraphQL</a>
