@@ -26,7 +26,7 @@ yarn add @craigmiller160/ajax-api
         <a href="./docs/creatingApiInstance.md">Creating API Instance</a>
     </li>
     <li>
-        <a>Making Requests</a>
+        <a href="./docs/makingRequests.md">Making Requests</a>
     </li>
     <li>
         <a href="./docs/errorHandling.md">Error Handling</a>
@@ -36,5 +36,8 @@ yarn add @craigmiller160/ajax-api
     </li>
     <li>
         <a>GraphQL</a>
+    </li>
+    <li>
+        <a>Testing</a>
     </li>
 </ol>
