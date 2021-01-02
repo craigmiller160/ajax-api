@@ -14,7 +14,7 @@
     "forceBuild": "web-config-scripts buildTSLib"
   },
   "devDependencies": {
-    "@craigmiller160/react-web-config": "^2.6.2",
+    "@craigmiller160/react-web-config": "file:.yalc/@craigmiller160/react-web-config",
     "@types/axios-mock-adapter": "^1.10.0",
     "@types/react": "^16.9.10",
     "@types/react-dom": "^16.9.10",
