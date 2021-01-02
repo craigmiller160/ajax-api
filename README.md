@@ -38,6 +38,6 @@ yarn add @craigmiller160/ajax-api
         <a href="./docs/graphql.md">GraphQL</a>
     </li>
     <li>
-        <a>Testing</a>
+        <a href="./docs/testing.md">Testing</a>
     </li>
 </ol>
