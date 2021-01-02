@@ -5,7 +5,7 @@ import { GraphQLQueryResponse } from '../src/types';
 import { CSRF_HEADER } from '../src/utils/csrfConstants';
 import CsrfError from '../src/errors/CsrfError';
 import GraphQLError from '../src/errors/GraphQLError';
-import { mockCsrfPreflight, mockCsrfToken } from '../lib/test-utils';
+import { mockCsrfPreflight, mockCsrfToken } from '../src/test-utils';
 
 const baseURL = '/base';
 const graphqlUri = '/graphql';
