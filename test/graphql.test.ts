@@ -68,8 +68,12 @@ describe('graphql', () => {
             baseURL
         });
         const mockApi = new MockAdapter(api.instance);
-        mockApi.onPost(overrideUri, payload)
-            .reply(200, successResponse);
+        mockAndValidateGraphQL<ResponseDataType>({
+            uri: overrideUri,
+            mockApi,
+            payload,
+            responseData: successResponse
+        });
         const res = await api.graphql<ResponseDataType>({
             payload,
             overrideUri
@@ -85,14 +89,11 @@ describe('graphql', () => {
         });
         const mockApi = new MockAdapter(api.instance);
         mockCsrfPreflight(mockApi, graphqlUri);
-        mockApi.onPost(graphqlUri, payload)
-            .reply((config) => {
-                expect(config.headers[CSRF_HEADER]).toEqual(mockCsrfToken);
-                return [
-                    200,
-                    successResponse
-                ];
-            });
+        mockAndValidateGraphQL<ResponseDataType>({
+            mockApi,
+            payload,
+            responseData: successResponse
+        });
         const res = await api.graphql<ResponseDataType>({
             payload
         });
@@ -221,8 +222,11 @@ describe('graphql', () => {
             defaultErrorHandler
         });
         const mockApi = new MockAdapter(api.instance);
-        mockApi.onPost(graphqlUri, payload)
-            .reply(200, errorResponse);
+        mockAndValidateGraphQL<ResponseDataType>({
+            mockApi,
+            payload,
+            responseData: errorResponse
+        });
         try {
             await api.graphql<ResponseDataType>({
                 payload,
