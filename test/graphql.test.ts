@@ -69,7 +69,7 @@ describe('graphql', () => {
         });
         const mockApi = new MockAdapter(api.instance);
         mockAndValidateGraphQL<ResponseDataType>({
-            uri: overrideUri,
+            overrideUri,
             mockApi,
             payload,
             responseData: successResponse

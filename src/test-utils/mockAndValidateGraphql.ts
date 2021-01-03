@@ -5,11 +5,11 @@ export interface GraphQLMockConfig<R> {
     mockApi: MockAdapter;
     payload: string;
     responseData?: GraphQLQueryResponse<R>
-    uri?: string;
+    overrideUri?: string;
 }
 
 export const mockAndValidateGraphQL = <R>(mockConfig: GraphQLMockConfig<R>): void => {
-    const uri = mockConfig.uri ?? '/graphql';
+    const uri = mockConfig.overrideUri ?? '/graphql';
     mockConfig.mockApi.onPost(uri)
         .reply((config) => {
             expect(config.data).stringsEqualIgnoreWhitespace(mockConfig.payload);

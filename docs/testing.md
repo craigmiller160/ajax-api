@@ -20,4 +20,17 @@ It is common to need to mock the CSRF OPTIONS preflight request, and even to val
 | Export Name | Description |
 |-------------|-------------|
 | mockCsrfToken | A mocked CSRF token used by the mocked preflight and set on the request header. Used for performing any kind of CSRF token validation. |
-| mockCsrfPreflight | A utility function that takes in the `axios-mock-adapter` instance and request URI to mock the OPTIONS preflight. | 
+| mockCsrfPreflight | A utility function that takes in the `axios-mock-adapter` instance and request URI to mock the OPTIONS preflight. |
+
+## Mocking GraphQL
+
+Mocking GraphQL can be challenging because of the payload. Properly indented GraphQL payloads may not match the payload in a test because of different indenting. Therefore a special export exists via `@craigmiller160/ajax-api/lib/test-utils` to mock GraphQL. It will use `axios-mock-adapter` to properly mock the call, and it will validate the payload while ignoring whitespace.
+
+The export is called `mockAndValidateGraphql`. It takes in an object with the following properties as configuration:
+
+| Name | Required | Description |
+|------|----------|-------------|
+| mockApi | Yes | An instance of `axios-mock-adapter` |
+| payload | Yes | The graphql request payload |
+| responseData | No | A response to return, if you want one. This should conform to the `GraphQLQueryResponse` type |
+| overrideUri | No | By default, all requests are sent to `/graphql`. If a different URI is used, pass it here. |
