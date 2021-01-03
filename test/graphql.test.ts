@@ -5,7 +5,7 @@ import { GraphQLQueryResponse } from '../src/types';
 import { CSRF_HEADER } from '../src/utils/csrfConstants';
 import CsrfError from '../src/errors/CsrfError';
 import GraphQLError from '../src/errors/GraphQLError';
-import { mockCsrfPreflight, mockCsrfToken } from '../src/test-utils';
+import { mockAndValidateGraphQL, mockCsrfPreflight, mockCsrfToken } from '../src/test-utils';
 
 const baseURL = '/base';
 const graphqlUri = '/graphql';
@@ -50,8 +50,11 @@ describe('graphql', () => {
             baseURL
         });
         const mockApi = new MockAdapter(api.instance);
-        mockApi.onPost(graphqlUri, payload)
-            .reply(200, successResponse);
+        mockAndValidateGraphQL<ResponseDataType>({
+            mockApi,
+            payload,
+            responseData: successResponse
+        });
         const res = await api.graphql<ResponseDataType>({
             payload
         });
