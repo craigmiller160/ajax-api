@@ -23,6 +23,7 @@
     "react-dom": "^16.14.0"
   },
   "dependencies": {
+    "@craigmiller160/jest-matchers-common": "file:.yalc/@craigmiller160/jest-matchers-common",
     "axios": "^0.21.1"
   }
 }
