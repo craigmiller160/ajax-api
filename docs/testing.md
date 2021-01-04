@@ -34,3 +34,15 @@ The export is called `mockAndValidateGraphql`. It takes in an object with the fo
 | payload | Yes | The graphql request payload |
 | responseData | No | A response to return, if you want one. This should conform to the `GraphQLQueryResponse` type |
 | overrideUri | No | By default, all requests are sent to `/graphql`. If a different URI is used, pass it here. |
+
+NOTE: This feature depends on a custom Jest matcher provided by a library. Install this library with:
+
+```
+yarn add --dev @craigmiller160/jest-matchers-common
+```
+
+Then in your test setup file, add this line:
+
+```
+import '@craigmiller160/jest-matchers-common';
+```
