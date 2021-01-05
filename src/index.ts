@@ -10,6 +10,7 @@ import { graphql } from './methods/graphql';
 
 export { default as GraphQLError } from './errors/GraphQLError';
 export { default as CsrfError } from './errors/CsrfError';
+export { isAxiosError } from './core/errorHandling';
 export * from './types';
 
 export const createApi = (config?: ApiConfig): AjaxApi => {
