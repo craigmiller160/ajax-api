@@ -31,7 +31,7 @@ type ResponseDataType = typeof responseData;
 const successResponse: GraphQLQueryResponse<ResponseDataType> = {
     data: responseData
 };
-const errorResponse: GraphQLQueryResponse<ResponseDataType> = {
+const errorResponse: GraphQLQueryResponse<ResponseDataType | null> = {
     data: null,
     errors: [
         {
@@ -222,7 +222,7 @@ describe('graphql', () => {
             defaultErrorHandler
         });
         const mockApi = new MockAdapter(api.instance);
-        mockAndValidateGraphQL<ResponseDataType>({
+        mockAndValidateGraphQL<ResponseDataType | null>({
             mockApi,
             payload,
             responseData: errorResponse

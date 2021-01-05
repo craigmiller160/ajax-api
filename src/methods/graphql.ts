@@ -23,13 +23,13 @@ export const graphql = (instance: AxiosInstance, handleError?: ErrorHandler) =>
 
         const uri = req.overrideUri ?? DEFAULT_GRAPHQL_URI;
 
-        return instance.post<GraphQLQueryResponse<R>>(uri, req.payload, config)
+        return instance.post<GraphQLQueryResponse<R | null>>(uri, req.payload, config)
             .then((res) => {
                 if ((res.data.errors?.length ?? 0) > 0) {
                     const message = getGraphQLErrorMessage(res.data);
                     throw new GraphQLError(message, res);
                 }
-                return res;
+                return res as AxiosResponse<GraphQLQueryResponse<R>>;
             })
             .catch((ex: Error) => {
                 handleError?.(ex, req);

@@ -34,7 +34,7 @@ export interface GraphQLResponseError {
 }
 
 export interface GraphQLQueryResponse<R> {
-    data: R | null;
+    data: R;
     errors?: Array<GraphQLResponseError>;
 }
 
