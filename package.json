@@ -1,6 +1,6 @@
 {
   "name": "@craigmiller160/ajax-api",
-  "version": "1.1.0-beta",
+  "version": "1.1.0",
   "main": "lib/index.js",
   "files": [
     "lib",
