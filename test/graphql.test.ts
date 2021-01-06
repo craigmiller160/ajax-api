@@ -2,10 +2,9 @@ import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
 import { GraphQLQueryResponse } from '../src/types';
-import { CSRF_HEADER } from '../src/utils/csrfConstants';
 import CsrfError from '../src/errors/CsrfError';
 import GraphQLError from '../src/errors/GraphQLError';
-import { mockAndValidateGraphQL, mockCsrfPreflight, mockCsrfToken } from '../src/test-utils';
+import { mockAndValidateGraphQL, mockCsrfPreflight } from '../src/test-utils';
 
 const baseURL = '/base';
 const graphqlUri = '/graphql';

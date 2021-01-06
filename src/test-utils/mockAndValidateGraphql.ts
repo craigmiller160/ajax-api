@@ -4,7 +4,7 @@ import { GraphQLQueryResponse } from '../types';
 export interface GraphQLMockConfig<R> {
     mockApi: MockAdapter;
     payload: string;
-    responseData?: GraphQLQueryResponse<R>
+    responseData?: GraphQLQueryResponse<R>;
     overrideUri?: string;
 }
 
@@ -18,4 +18,4 @@ export const mockAndValidateGraphQL = <R>(mockConfig: GraphQLMockConfig<R>): voi
                 mockConfig.responseData
             ];
         });
-}
+};
