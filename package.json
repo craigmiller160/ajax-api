@@ -1,7 +1,11 @@
 {
   "name": "@craigmiller160/ajax-api",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "lib/index.js",
+  "publishConfig": {
+    "registry": "http://craigpc:30003/repository/npm-private/"
+  },
+  "author": "craigmiller160",
   "files": [
     "lib",
     ".yalc"
@@ -15,7 +19,7 @@
   },
   "devDependencies": {
     "@craigmiller160/jest-matchers-common": "^1.0.0",
-    "@craigmiller160/react-web-config": "^2.7.0",
+    "@craigmiller160/react-web-config": "^2.8.1",
     "@types/axios-mock-adapter": "^1.10.0",
     "@types/react": "^16.9.10",
     "@types/react-dom": "^16.9.10",
