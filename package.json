@@ -3,7 +3,7 @@
   "version": "1.2.0-beta",
   "main": "lib/index.js",
   "publishConfig": {
-    "registry": "http://craigpc:30003/repository/npm-private/"
+    "registry": "https://craigmiller160.ddns.net:30003/repository/npm-private/"
   },
   "author": "craigmiller160",
   "files": [
@@ -18,8 +18,8 @@
     "forceBuild": "web-config-scripts buildTSLib"
   },
   "devDependencies": {
-    "@craigmiller160/jest-matchers-common": "^1.0.1",
-    "@craigmiller160/react-web-config": "^2.8.1",
+    "@craigmiller160/jest-matchers-common": "^1.0.2",
+    "@craigmiller160/react-web-config": "^2.8.2",
     "@types/axios-mock-adapter": "^1.10.0",
     "@types/react": "^16.9.10",
     "@types/react-dom": "^16.9.10",
