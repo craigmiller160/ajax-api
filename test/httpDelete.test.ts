@@ -11,6 +11,9 @@ const defaultErrorHandler = jest.fn();
 const message = 'The message';
 
 describe('HTTP DELETE', () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
 	it('makes successful request without CSRF', async () => {
 		const api = createApi({
 			baseURL

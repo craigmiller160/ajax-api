@@ -16,6 +16,9 @@ const body = {
 type BodyType = typeof body;
 
 describe('HTTP POST', () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
 	it('makes successful request without CSRF', async () => {
 		const api = createApi({
 			baseURL

@@ -44,6 +44,9 @@ const errorResponse: GraphQLQueryResponse<ResponseDataType | null> = {
 const graphqlErrorMessage = 'First error\nSecond error';
 
 describe('graphql', () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
 	it('makes successful request without CSRF', async () => {
 		const api = createApi({
 			baseURL

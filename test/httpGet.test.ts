@@ -8,6 +8,9 @@ const defaultErrorHandler = jest.fn();
 const message = 'The message';
 
 describe('HTTP GET', () => {
+	beforeEach(() => {
+		jest.clearAllMocks();
+	});
 	it('makes successful request', async () => {
 		const api = createApi({
 			baseURL
