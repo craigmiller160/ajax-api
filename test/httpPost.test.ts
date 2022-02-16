@@ -125,7 +125,7 @@ describe('HTTP POST', () => {
 			defaultErrorHandler
 		});
 		new MockAdapter(api.instance); // eslint-disable-line no-new
-		api.instance.interceptors.request.use((config) => {
+		api.instance.interceptors.request.use(() => {
 			throw new Error('Dying');
 		});
 		try {
@@ -135,7 +135,9 @@ describe('HTTP POST', () => {
 				errorMsg: message
 			});
 		} catch (ex) {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			expect((ex as any).response).toBeUndefined();
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			expect((ex as any).message).toEqual('Dying');
 			expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex, message);
 			return;
@@ -155,7 +157,7 @@ describe('HTTP POST', () => {
 				uri,
 				body,
 				errorMsg: message,
-				suppressError: (ex) => true
+				suppressError: () => true
 			});
 		} catch (ex) {
 			const axiosError = ex as AxiosError<string>;

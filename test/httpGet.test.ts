@@ -54,7 +54,7 @@ describe('HTTP GET', () => {
 			await api.get<string>({
 				uri,
 				errorMsg: message,
-				suppressError: (ex) => true
+				suppressError: () => true
 			});
 		} catch (ex) {
 			const axiosError = ex as AxiosError<string>;
@@ -92,8 +92,8 @@ describe('HTTP GET', () => {
 			baseURL,
 			defaultErrorHandler
 		});
-		new MockAdapter(api.instance); // eslint-disable-line no-new
-		api.instance.interceptors.request.use((config) => {
+		new MockAdapter(api.instance);
+		api.instance.interceptors.request.use(() => {
 			throw new Error('Dying');
 		});
 		try {
@@ -102,7 +102,9 @@ describe('HTTP GET', () => {
 				errorMsg: message
 			});
 		} catch (ex) {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			expect((ex as any).response).toBeUndefined();
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			expect((ex as any).message).toEqual('Dying');
 			expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex, message);
 			return;
