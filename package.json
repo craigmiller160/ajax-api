@@ -16,7 +16,11 @@
     "lint": "craig-lint",
     "test": "craig-test",
     "build": "yarn lint && yarn test && yarn forceBuild",
-    "forceBuild": "rm -rf lib && tsc"
+    "forceBuild": "rm -rf lib && tsc",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "yarn lint"
   },
   "devDependencies": {
     "@craigmiller160/babel-config": "^1.1.0",
@@ -34,6 +38,8 @@
     "@types/react-dom": "^16.9.10",
     "axios-mock-adapter": "^1.19.0",
     "core-js": "^3.21.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "regenerator-runtime": "^0.13.9",
