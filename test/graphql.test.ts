@@ -114,8 +114,9 @@ describe('graphql', () => {
             });
         } catch (ex) {
             expect(ex).toBeInstanceOf(CsrfError);
-            expect(ex.message).toEqual('Request failed preflight');
-            const cause = (ex as CsrfError).error as AxiosError<string>;
+            const csrfError = ex as CsrfError;
+            expect(csrfError.message).toEqual('Request failed preflight');
+            const cause = csrfError.error as AxiosError<string>;
             expect(cause.response?.status).toEqual(404);
             expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex, message);
             return;
@@ -184,7 +185,7 @@ describe('graphql', () => {
             });
         } catch (ex) {
             expect((ex as any).response).toBeUndefined();
-            expect(ex.message).toEqual('Dying');
+            expect((ex as any).message).toEqual('Dying');
             expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex, message);
             return;
         }
@@ -233,8 +234,9 @@ describe('graphql', () => {
             });
         } catch (ex) {
             expect(ex).toBeInstanceOf(GraphQLError);
-            expect(ex.message).toEqual(graphqlErrorMessage);
-            const res = (ex as GraphQLError).response;
+            const gqlError = ex as GraphQLError;
+            expect(gqlError.message).toEqual(graphqlErrorMessage);
+            const res = gqlError.response;
             expect(res.status).toEqual(200);
             expect(res.data).toEqual(errorResponse);
             expect(defaultErrorHandler).toHaveBeenCalledWith(200, ex, message);

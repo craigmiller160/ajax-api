@@ -19,6 +19,7 @@
     "forceBuild": "rm -rf lib && tsc"
   },
   "devDependencies": {
+    "@craigmiller160/babel-config": "^1.0.0",
     "@craigmiller160/config-merge": "^1.0.0",
     "@craigmiller160/eslint-config-jest": "^1.0.0",
     "@craigmiller160/eslint-config-js": "^1.0.0",
@@ -32,8 +33,10 @@
     "@types/react": "^16.9.10",
     "@types/react-dom": "^16.9.10",
     "axios-mock-adapter": "^1.19.0",
+    "core-js": "^3.21.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "regenerator-runtime": "^0.13.9",
     "typescript": "^4.5.5"
   },
   "dependencies": {
