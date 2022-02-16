@@ -19,7 +19,7 @@
     "forceBuild": "rm -rf lib && tsc"
   },
   "devDependencies": {
-    "@craigmiller160/babel-config": "^1.0.0",
+    "@craigmiller160/babel-config": "^1.1.0",
     "@craigmiller160/config-merge": "^1.0.0",
     "@craigmiller160/eslint-config-jest": "^1.0.0",
     "@craigmiller160/eslint-config-js": "^1.0.0",
