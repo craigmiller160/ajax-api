@@ -34,7 +34,7 @@ describe('HTTP DELETE', () => {
         mockCsrfPreflight(mockApi, uri);
         mockApi.onDelete(uri)
             .reply((config) => {
-                expect(config.headers[CSRF_HEADER]).toEqual(mockCsrfToken);
+                expect(config.headers?.[CSRF_HEADER]).toEqual(mockCsrfToken);
                 return [
                     200,
                     'Success'
@@ -61,8 +61,9 @@ describe('HTTP DELETE', () => {
             });
         } catch (ex) {
             expect(ex).toBeInstanceOf(CsrfError);
-            expect(ex.message).toEqual('Request failed preflight');
-            const cause = (ex as CsrfError).error as AxiosError<string>;
+            const csrfError = ex as CsrfError;
+            expect(csrfError.message).toEqual('Request failed preflight');
+            const cause = csrfError.error as AxiosError<string>;
             expect(cause.response?.status).toEqual(404);
             expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex, message);
             return;
@@ -131,7 +132,7 @@ describe('HTTP DELETE', () => {
             });
         } catch (ex) {
             expect((ex as any).response).toBeUndefined();
-            expect(ex.message).toEqual('Dying');
+            expect((ex as any).message).toEqual('Dying');
             expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex, message);
             return;
         }

@@ -107,7 +107,7 @@ describe('HTTP GET', () => {
             });
         } catch (ex) {
             expect((ex as any).response).toBeUndefined();
-            expect(ex.message).toEqual('Dying');
+            expect((ex as any).message).toEqual('Dying');
             expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex, message);
             return;
         }
