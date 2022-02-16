@@ -14,19 +14,19 @@ export { isAxiosError } from './core/errorHandling';
 export * from './types';
 
 export const createApi = (config?: ApiConfig): AjaxApi => {
-    const baseURL = config?.baseURL ?? '/';
-    const useCsrf = config?.useCsrf ?? false;
-    const instance: AxiosInstance = createInstance(baseURL, useCsrf);
-    let errorHandler: ErrorHandler | undefined;
-    if (config?.defaultErrorHandler) {
-        errorHandler = createErrorHandler(config.defaultErrorHandler);
-    }
-    return {
-        instance,
-        get: get(instance, errorHandler),
-        post: post(instance, errorHandler),
-        put: put(instance, errorHandler),
-        delete: doDelete(instance, errorHandler),
-        graphql: graphql(instance, errorHandler)
-    };
+	const baseURL = config?.baseURL ?? '/';
+	const useCsrf = config?.useCsrf ?? false;
+	const instance: AxiosInstance = createInstance(baseURL, useCsrf);
+	let errorHandler: ErrorHandler | undefined;
+	if (config?.defaultErrorHandler) {
+		errorHandler = createErrorHandler(config.defaultErrorHandler);
+	}
+	return {
+		instance,
+		get: get(instance, errorHandler),
+		post: post(instance, errorHandler),
+		put: put(instance, errorHandler),
+		delete: doDelete(instance, errorHandler),
+		graphql: graphql(instance, errorHandler)
+	};
 };

@@ -2,6 +2,7 @@
   "name": "@craigmiller160/ajax-api",
   "version": "1.2.0-beta",
   "main": "lib/index.js",
+  "sideEffects": false,
   "publishConfig": {
     "registry": "https://craigmiller160.ddns.net:30003/repository/npm-private/"
   },
@@ -12,22 +13,39 @@
   ],
   "types": "lib/index.d.ts",
   "scripts": {
-    "lint": "web-config-scripts lint",
-    "test": "web-config-scripts test",
-    "build": "web-config-scripts lint && web-config-scripts test && web-config-scripts buildTSLib",
-    "forceBuild": "web-config-scripts buildTSLib"
+    "lint": "craig-lint",
+    "test": "craig-test",
+    "build": "yarn lint && yarn test && yarn forceBuild",
+    "forceBuild": "rm -rf lib && tsc",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "yarn lint"
   },
   "devDependencies": {
+    "@craigmiller160/babel-config": "^1.1.0",
+    "@craigmiller160/config-merge": "^1.0.0",
+    "@craigmiller160/eslint-config-jest": "^1.0.0",
+    "@craigmiller160/eslint-config-js": "^1.0.0",
+    "@craigmiller160/eslint-config-prettier": "^1.0.0",
+    "@craigmiller160/eslint-config-ts": "^1.0.0",
+    "@craigmiller160/jest-config": "^1.0.0",
+    "@craigmiller160/jest-config-ts": "^1.0.0",
     "@craigmiller160/jest-matchers-common": "^1.0.2",
-    "@craigmiller160/react-web-config": "^2.8.2",
+    "@craigmiller160/prettier-config": "^1.0.0",
     "@types/axios-mock-adapter": "^1.10.0",
     "@types/react": "^16.9.10",
     "@types/react-dom": "^16.9.10",
     "axios-mock-adapter": "^1.19.0",
+    "core-js": "^3.21.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.4",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "regenerator-runtime": "^0.13.9",
+    "typescript": "^4.5.5"
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.26.0"
   }
 }
