@@ -11,7 +11,10 @@ const createCsrfHandlingInterceptor = (instance: AxiosInstance) =>
                 }
             })
                 .then((res: AxiosResponse) => {
-                    config.headers[CSRF_HEADER] = res.headers[CSRF_HEADER]; // eslint-disable-line no-param-reassign
+                    config.headers = {
+                        ...(config.headers ?? {}),
+                        [CSRF_HEADER]: res.headers[CSRF_HEADER]
+                    };
                     return config;
                 })
                 .catch((ex) => {
