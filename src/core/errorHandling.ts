@@ -31,6 +31,9 @@ export const createErrorHandler =
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			if (isAxiosError<any>(error)) {
 				status = error?.response?.status ?? 0;
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			} else if (isAxiosError<any>(error?.cause)) {
+				status = error?.cause?.response?.status ?? 0;
 			}
 			errorHandler(status, error);
 		}
