@@ -116,12 +116,12 @@ describe('graphql', () => {
 				errorCustomizer: message
 			});
 		} catch (ex) {
-			expect(ex).toBeInstanceOf(CsrfError);
-			const csrfError = ex as CsrfError;
+			expect((ex as Error).cause).toBeInstanceOf(CsrfError);
+			const csrfError = (ex as Error).cause as CsrfError;
 			expect(csrfError.message).toEqual('Request failed preflight');
 			const cause = csrfError.error as AxiosError<string>;
 			expect(cause.response?.status).toEqual(404);
-			expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex, message);
+			expect(defaultErrorHandler).toHaveBeenCalledWith(0, csrfError);
 			return;
 		}
 		throw new Error('Should have been error');
