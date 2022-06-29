@@ -36,7 +36,8 @@ export const graphql =
 				return res as AxiosResponse<GraphQLQueryResponse<R>>;
 			})
 			.catch((ex: Error) => {
-				handleError?.(ex, req);
-				return Promise.reject(customizeError(ex, req.errorCustomizer));
+				const newError = customizeError(ex, req.errorCustomizer);
+				handleError?.(newError, req);
+				return Promise.reject(newError);
 			});
 	};

@@ -6,6 +6,7 @@ export const get =
 	(instance: AxiosInstance, handleError?: ErrorHandler) =>
 	<R>(req: UriRequestConfig): Promise<AxiosResponse<R>> =>
 		instance.get<R>(req.uri, req.config).catch((ex: Error) => {
-			handleError?.(ex, req);
-			return Promise.reject(customizeError(ex, req.errorCustomizer));
+			const newError = customizeError(ex, req.errorCustomizer);
+			handleError?.(newError, req);
+			return Promise.reject(newError);
 		});

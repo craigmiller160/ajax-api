@@ -6,6 +6,7 @@ export const post =
 	(instance: AxiosInstance, handleError?: ErrorHandler) =>
 	<B, R>(req: UriBodyRequestConfig<B>): Promise<AxiosResponse<R>> =>
 		instance.post<R>(req.uri, req.body, req.config).catch((ex: Error) => {
-			handleError?.(ex, req);
-			return Promise.reject(customizeError(ex, req.errorCustomizer));
+			const newError = customizeError(ex, req.errorCustomizer);
+			handleError?.(newError, req);
+			return Promise.reject(newError);
 		});
