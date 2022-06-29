@@ -5,6 +5,18 @@ import { BaseRequestConfig, DefaultErrorHandler } from '../types';
 export const isAxiosError = <R>(ex: any): ex is AxiosError<R> =>
 	ex.response !== undefined && ex.response !== null;
 
+export const customizeError = (
+	error: Error,
+	errorCustomizer: string | ((e: Error) => Error)
+): Error => {
+	if (typeof errorCustomizer === 'string') {
+		return new Error(errorCustomizer, {
+			cause: error
+		});
+	}
+	return errorCustomizer(error);
+};
+
 export type ErrorHandler = (error: Error, config: BaseRequestConfig) => void;
 
 export const createErrorHandler =
