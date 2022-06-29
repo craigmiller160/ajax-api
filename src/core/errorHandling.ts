@@ -16,6 +16,6 @@ export const createErrorHandler =
 			if (isAxiosError<any>(error)) {
 				status = error?.response?.status ?? 0;
 			}
-			errorHandler(status, error, config.errorMsg);
+			errorHandler(status, error);
 		}
 	};

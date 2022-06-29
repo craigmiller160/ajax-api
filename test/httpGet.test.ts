@@ -34,7 +34,7 @@ describe('HTTP GET', () => {
 		try {
 			await api.get<string>({
 				uri,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			const axiosError = ex as AxiosError<string>;
@@ -56,7 +56,7 @@ describe('HTTP GET', () => {
 		try {
 			await api.get<string>({
 				uri,
-				errorMsg: message,
+				errorCustomizer: message,
 				suppressError: () => true
 			});
 		} catch (ex) {
@@ -78,7 +78,7 @@ describe('HTTP GET', () => {
 		try {
 			await api.get<string>({
 				uri,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			const axiosError = ex as AxiosError<string>;
@@ -102,7 +102,7 @@ describe('HTTP GET', () => {
 		try {
 			await api.get<string>({
 				uri,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any

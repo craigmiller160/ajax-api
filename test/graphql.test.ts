@@ -113,7 +113,7 @@ describe('graphql', () => {
 		try {
 			await api.graphql<ResponseDataType>({
 				payload,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			expect(ex).toBeInstanceOf(CsrfError);
@@ -137,7 +137,7 @@ describe('graphql', () => {
 		try {
 			await api.graphql<ResponseDataType>({
 				payload,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			const axiosError = ex as AxiosError<string>;
@@ -158,7 +158,7 @@ describe('graphql', () => {
 		try {
 			await api.graphql<ResponseDataType>({
 				payload,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			const axiosError = ex as AxiosError<string>;
@@ -182,7 +182,7 @@ describe('graphql', () => {
 		try {
 			await api.graphql<ResponseDataType>({
 				payload,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -205,7 +205,7 @@ describe('graphql', () => {
 		try {
 			await api.graphql<ResponseDataType>({
 				payload,
-				errorMsg: message,
+				errorCustomizer: message,
 				suppressError: () => true
 			});
 		} catch (ex) {
@@ -232,7 +232,7 @@ describe('graphql', () => {
 		try {
 			await api.graphql<ResponseDataType>({
 				payload,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			expect(ex).toBeInstanceOf(GraphQLError);

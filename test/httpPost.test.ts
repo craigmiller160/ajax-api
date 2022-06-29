@@ -63,7 +63,7 @@ describe('HTTP POST', () => {
 			await api.post<BodyType, string>({
 				uri,
 				body,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			expect(ex).toBeInstanceOf(CsrfError);
@@ -88,7 +88,7 @@ describe('HTTP POST', () => {
 			await api.post<BodyType, string>({
 				uri,
 				body,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			const axiosError = ex as AxiosError<string>;
@@ -110,7 +110,7 @@ describe('HTTP POST', () => {
 			await api.post<BodyType, string>({
 				uri,
 				body,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			const axiosError = ex as AxiosError<string>;
@@ -135,7 +135,7 @@ describe('HTTP POST', () => {
 			await api.post<BodyType, string>({
 				uri,
 				body,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -159,7 +159,7 @@ describe('HTTP POST', () => {
 			await api.post<BodyType, string>({
 				uri,
 				body,
-				errorMsg: message,
+				errorCustomizer: message,
 				suppressError: () => true
 			});
 		} catch (ex) {

@@ -55,7 +55,7 @@ describe('HTTP DELETE', () => {
 		try {
 			await api.delete<string>({
 				uri,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			expect(ex).toBeInstanceOf(CsrfError);
@@ -79,7 +79,7 @@ describe('HTTP DELETE', () => {
 		try {
 			await api.delete<string>({
 				uri,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			const axiosError = ex as AxiosError<string>;
@@ -100,7 +100,7 @@ describe('HTTP DELETE', () => {
 		try {
 			await api.delete<string>({
 				uri,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			const axiosError = ex as AxiosError<string>;
@@ -124,7 +124,7 @@ describe('HTTP DELETE', () => {
 		try {
 			await api.delete<string>({
 				uri,
-				errorMsg: message
+				errorCustomizer: message
 			});
 		} catch (ex) {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -147,7 +147,7 @@ describe('HTTP DELETE', () => {
 		try {
 			await api.delete<string>({
 				uri,
-				errorMsg: message,
+				errorCustomizer: message,
 				suppressError: () => true
 			});
 		} catch (ex) {
