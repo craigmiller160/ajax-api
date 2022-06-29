@@ -7,14 +7,18 @@ export const isAxiosError = <R>(ex: any): ex is AxiosError<R> =>
 
 export const customizeError = (
 	error: Error,
-	errorCustomizer: string | ((e: Error) => Error)
+	errorCustomizer?: string | ((e: Error) => Error)
 ): Error => {
-	if (typeof errorCustomizer === 'string') {
+	if (errorCustomizer !== undefined && typeof errorCustomizer === 'string') {
 		return new Error(errorCustomizer, {
 			cause: error
 		});
 	}
-	return errorCustomizer(error);
+
+	if (errorCustomizer !== undefined) {
+		return errorCustomizer(error);
+	}
+	return error;
 };
 
 export type ErrorHandler = (error: Error, config: BaseRequestConfig) => void;
