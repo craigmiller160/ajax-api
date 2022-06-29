@@ -212,7 +212,7 @@ describe('graphql', () => {
 				suppressError: () => true
 			});
 		} catch (ex) {
-			const axiosError = ex as AxiosError<string>;
+			const axiosError = (ex as Error).cause as AxiosError<string>;
 			expect(axiosError.response?.status).toEqual(500);
 			expect(axiosError.response?.data).toEqual('Error');
 			expect(defaultErrorHandler).not.toHaveBeenCalled();
@@ -238,13 +238,16 @@ describe('graphql', () => {
 				errorCustomizer: message
 			});
 		} catch (ex) {
-			expect(ex).toBeInstanceOf(GraphQLError);
-			const gqlError = ex as GraphQLError;
+			expect((ex as Error).cause).toBeInstanceOf(GraphQLError);
+			const gqlError = (ex as Error).cause as GraphQLError;
 			expect(gqlError.message).toEqual(graphqlErrorMessage);
 			const res = gqlError.response;
 			expect(res.status).toEqual(200);
 			expect(res.data).toEqual(errorResponse);
-			expect(defaultErrorHandler).toHaveBeenCalledWith(200, ex, message);
+			expect(defaultErrorHandler).toHaveBeenCalledWith(
+				200,
+				(ex as Error).cause
+			);
 			return;
 		}
 		throw new Error('Should have been error');
