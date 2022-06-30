@@ -163,7 +163,7 @@ describe('HTTP PUT', () => {
 				suppressError: () => true
 			});
 		} catch (ex) {
-			const axiosError = ex as AxiosError<string>;
+			const axiosError = (ex as Error).cause as AxiosError<string>;
 			expect(axiosError.response?.status).toEqual(500);
 			expect(axiosError.response?.data).toEqual('Error');
 			expect(defaultErrorHandler).not.toHaveBeenCalled();
