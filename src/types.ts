@@ -4,7 +4,7 @@ export type SuppressErrorFn = (ex: Error) => boolean;
 
 export interface BaseRequestConfig {
 	config?: AxiosRequestConfig;
-	errorMsg?: string;
+	errorCustomizer?: string | ((e: Error) => Error);
 	suppressError?: SuppressErrorFn;
 }
 
@@ -21,11 +21,7 @@ export interface GraphQLRequestConfig extends BaseRequestConfig {
 	overrideUri?: string;
 }
 
-export type DefaultErrorHandler = (
-	status: number,
-	error: Error,
-	requestMessage?: string
-) => void;
+export type DefaultErrorHandler = (status: number, error: Error) => void;
 
 export interface ApiConfig {
 	baseURL?: string;

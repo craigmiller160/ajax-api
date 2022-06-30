@@ -1,11 +1,12 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
-import { ErrorHandler } from '../core/errorHandling';
+import { customizeError, ErrorHandler } from '../core/errorHandling';
 import { UriBodyRequestConfig } from '../types';
 
 export const post =
 	(instance: AxiosInstance, handleError?: ErrorHandler) =>
 	<B, R>(req: UriBodyRequestConfig<B>): Promise<AxiosResponse<R>> =>
 		instance.post<R>(req.uri, req.body, req.config).catch((ex: Error) => {
-			handleError?.(ex, req);
-			throw ex;
+			const newError = customizeError(ex, req.errorCustomizer);
+			handleError?.(newError, req);
+			return Promise.reject(newError);
 		});

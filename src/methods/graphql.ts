@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { ErrorHandler } from '../core/errorHandling';
+import { customizeError, ErrorHandler } from '../core/errorHandling';
 import { GraphQLQueryResponse, GraphQLRequestConfig } from '../types';
 import GraphQLError from '../errors/GraphQLError';
 import { CONTENT_TYPE_HEADER } from '../utils/commonConstants';
@@ -36,7 +36,8 @@ export const graphql =
 				return res as AxiosResponse<GraphQLQueryResponse<R>>;
 			})
 			.catch((ex: Error) => {
-				handleError?.(ex, req);
-				throw ex;
+				const newError = customizeError(ex, req.errorCustomizer);
+				handleError?.(newError, req);
+				return Promise.reject(newError);
 			});
 	};
