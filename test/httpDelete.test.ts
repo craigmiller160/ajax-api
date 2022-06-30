@@ -130,7 +130,7 @@ describe('HTTP DELETE', () => {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			expect((ex as any).response).toBeUndefined();
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			expect((ex as any).message).toEqual('Dying');
+			expect(((ex as Error).cause as any).message).toEqual('Dying');
 			expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex, message);
 			return;
 		}
