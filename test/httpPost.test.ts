@@ -25,7 +25,7 @@ describe('HTTP POST', () => {
 		});
 		const mockApi = new MockAdapter(api.instance);
 		mockApi.onPost(uri, body).reply(200, 'Success');
-		const res = await api.post<BodyType, string>({
+		const res = await api.post<string, BodyType>({
 			uri,
 			body
 		});
@@ -44,7 +44,7 @@ describe('HTTP POST', () => {
 			expect(config.headers?.[CSRF_HEADER]).toEqual(mockCsrfToken);
 			return [200, 'Success'];
 		});
-		const res = await api.post<BodyType, string>({
+		const res = await api.post<string, BodyType>({
 			uri,
 			body
 		});
@@ -60,7 +60,7 @@ describe('HTTP POST', () => {
 		});
 		new MockAdapter(api.instance); // eslint-disable-line no-new
 		try {
-			await api.post<BodyType, string>({
+			await api.post<string, BodyType>({
 				uri,
 				body,
 				errorCustomizer: message
@@ -85,7 +85,7 @@ describe('HTTP POST', () => {
 		const mockApi = new MockAdapter(api.instance);
 		mockApi.onPost(uri, body).reply(500, 'Error');
 		try {
-			await api.post<BodyType, string>({
+			await api.post<string, BodyType>({
 				uri,
 				body,
 				errorCustomizer: message
@@ -107,7 +107,7 @@ describe('HTTP POST', () => {
 		const mockApi = new MockAdapter(api.instance);
 		mockApi.onPost(uri, body).reply(500, 'Error');
 		try {
-			await api.post<BodyType, string>({
+			await api.post<string, BodyType>({
 				uri,
 				body,
 				errorCustomizer: message
@@ -132,7 +132,7 @@ describe('HTTP POST', () => {
 			throw new Error('Dying');
 		});
 		try {
-			await api.post<BodyType, string>({
+			await api.post<string, BodyType>({
 				uri,
 				body,
 				errorCustomizer: message
@@ -156,7 +156,7 @@ describe('HTTP POST', () => {
 		const mockApi = new MockAdapter(api.instance);
 		mockApi.onPost(uri, body).reply(500, 'Error');
 		try {
-			await api.post<BodyType, string>({
+			await api.post<string, BodyType>({
 				uri,
 				body,
 				errorCustomizer: message,

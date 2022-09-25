@@ -1,12 +1,17 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 import { customizeError, ErrorHandler } from '../core/errorHandling';
-import { UriRequestConfig } from '../types';
+import { UriBodyRequestConfig } from '../types';
 
 export const doDelete =
 	(instance: AxiosInstance, handleError?: ErrorHandler) =>
-	<R>(req: UriRequestConfig): Promise<AxiosResponse<R>> =>
-		instance.delete<R>(req.uri, req.config).catch((ex: Error) => {
-			const newError = customizeError(ex, req.errorCustomizer);
-			handleError?.(newError, req);
-			return Promise.reject(newError);
-		});
+	<R, B = unknown>(req: UriBodyRequestConfig<B>): Promise<AxiosResponse<R>> =>
+		instance
+			.delete<R>(req.uri, {
+				...req.config,
+				data: req.body
+			})
+			.catch((ex: Error) => {
+				const newError = customizeError(ex, req.errorCustomizer);
+				handleError?.(newError, req);
+				return Promise.reject(newError);
+			});
