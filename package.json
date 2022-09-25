@@ -1,10 +1,10 @@
 {
   "name": "@craigmiller160/ajax-api",
-  "version": "1.2.0-beta",
+  "version": "1.2.0-beta.3",
   "main": "lib/index.js",
   "sideEffects": false,
   "publishConfig": {
-    "registry": "https://craigmiller160.ddns.net:30003/repository/npm-private/"
+    "registry": "https://nexus-craigmiller160.ddns.net/repository/npm-private/"
   },
   "author": "craigmiller160",
   "files": [
