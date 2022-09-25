@@ -41,9 +41,11 @@ export interface GraphQLQueryResponse<R> {
 export interface AjaxApi {
 	instance: AxiosInstance;
 	get: <R>(req: UriRequestConfig) => Promise<AxiosResponse<R>>;
-	post: <B, R>(req: UriBodyRequestConfig<B>) => Promise<AxiosResponse<R>>;
-	put: <B, R>(req: UriBodyRequestConfig<B>) => Promise<AxiosResponse<R>>;
-	delete: <R>(req: UriRequestConfig) => Promise<AxiosResponse<R>>;
+	post: <R, B>(req: UriBodyRequestConfig<B>) => Promise<AxiosResponse<R>>;
+	put: <R, B>(req: UriBodyRequestConfig<B>) => Promise<AxiosResponse<R>>;
+	delete: <R, B = unknown>(
+		req: UriBodyRequestConfig<B>
+	) => Promise<AxiosResponse<R>>;
 	graphql: <R>(
 		req: GraphQLRequestConfig
 	) => Promise<AxiosResponse<GraphQLQueryResponse<R>>>;

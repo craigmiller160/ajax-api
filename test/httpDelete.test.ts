@@ -27,7 +27,26 @@ describe('HTTP DELETE', () => {
 		expect(res.data).toEqual('Success');
 	});
 
-	it('makes successful request with CSRF', async () => {
+	it('makes successful request with body', async () => {
+		const api = createApi({
+			baseURL,
+			useCsrf: true
+		});
+		const mockApi = new MockAdapter(api.instance);
+		mockApi.onDelete(uri).reply((config) => {
+			expect(config.data).toEqual('Hello World');
+			expect(config.headers?.[CSRF_HEADER]).toEqual(mockCsrfToken);
+			return [200, 'Success'];
+		});
+		const res = await api.delete<string, string>({
+			uri,
+			body: 'Hello World'
+		});
+		expect(res.status).toEqual(200);
+		expect(res.data).toEqual('Success');
+	});
+
+	it('makes successful request without body, with CSRF', async () => {
 		const api = createApi({
 			baseURL,
 			useCsrf: true
