@@ -30,12 +30,11 @@ describe('HTTP DELETE', () => {
 	it('makes successful request with body', async () => {
 		const api = createApi({
 			baseURL,
-			useCsrf: true
+			useCsrf: false
 		});
 		const mockApi = new MockAdapter(api.instance);
 		mockApi.onDelete(uri).reply((config) => {
 			expect(config.data).toEqual('Hello World');
-			expect(config.headers?.[CSRF_HEADER]).toEqual(mockCsrfToken);
 			return [200, 'Success'];
 		});
 		const res = await api.delete<string, string>({
