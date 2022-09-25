@@ -25,7 +25,7 @@ describe('HTTP PUT', () => {
 		});
 		const mockApi = new MockAdapter(api.instance);
 		mockApi.onPut(uri, body).reply(200, 'Success');
-		const res = await api.put<BodyType, string>({
+		const res = await api.put<string, BodyType>({
 			uri,
 			body
 		});
@@ -44,7 +44,7 @@ describe('HTTP PUT', () => {
 			expect(config.headers?.[CSRF_HEADER]).toEqual(mockCsrfToken);
 			return [200, 'Success'];
 		});
-		const res = await api.put<BodyType, string>({
+		const res = await api.put<string, BodyType>({
 			uri,
 			body
 		});
@@ -60,7 +60,7 @@ describe('HTTP PUT', () => {
 		});
 		new MockAdapter(api.instance); // eslint-disable-line no-new
 		try {
-			await api.put<BodyType, string>({
+			await api.put<string, BodyType>({
 				uri,
 				body,
 				errorCustomizer: message
@@ -85,7 +85,7 @@ describe('HTTP PUT', () => {
 		const mockApi = new MockAdapter(api.instance);
 		mockApi.onPut(uri, body).reply(500, 'Error');
 		try {
-			await api.put<BodyType, string>({
+			await api.put<string, BodyType>({
 				uri,
 				body,
 				errorCustomizer: message
@@ -107,7 +107,7 @@ describe('HTTP PUT', () => {
 		const mockApi = new MockAdapter(api.instance);
 		mockApi.onPut(uri, body).reply(500, 'Error');
 		try {
-			await api.put<BodyType, string>({
+			await api.put<string, BodyType>({
 				uri,
 				body,
 				errorCustomizer: message
@@ -132,7 +132,7 @@ describe('HTTP PUT', () => {
 			throw new Error('Dying');
 		});
 		try {
-			await api.put<BodyType, string>({
+			await api.put<string, BodyType>({
 				uri,
 				body,
 				errorCustomizer: message
@@ -156,7 +156,7 @@ describe('HTTP PUT', () => {
 		const mockApi = new MockAdapter(api.instance);
 		mockApi.onPut(uri, body).reply(500, 'Error');
 		try {
-			await api.put<BodyType, string>({
+			await api.put<string, BodyType>({
 				uri,
 				body,
 				errorCustomizer: message,
