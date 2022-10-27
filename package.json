@@ -14,7 +14,7 @@
   "scripts": {
     "lint": "web-config-scripts lint",
     "test": "web-config-scripts test",
-    "build": "web-config-scripts test && web-config-scripts buildTSLib",
+    "build": "web-config-scripts buildTSLib",
     "forceBuild": "web-config-scripts buildTSLib"
   },
   "devDependencies": {
