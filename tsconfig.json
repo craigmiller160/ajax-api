@@ -21,13 +21,13 @@
     "module": "es2015"
   },
   "include": [
-    "/home/craig/Development/Libraries/ajax-api/src/**/*",
-    "/home/craig/Development/Libraries/ajax-api/test/**/*"
+    "/Users/craigmiller/Development/Libraries/ajax-api/src/**/*",
+    "/Users/craigmiller/Development/Libraries/ajax-api/test/**/*"
   ],
   "exclude": [
-    "/home/craig/Development/Libraries/ajax-api/node_modules",
-    "/home/craig/Development/Libraries/ajax-api/lib",
-    "/home/craig/Development/Libraries/ajax-api/build",
-    "/home/craig/Development/Libraries/ajax-api/.yalc"
+    "/Users/craigmiller/Development/Libraries/ajax-api/node_modules",
+    "/Users/craigmiller/Development/Libraries/ajax-api/lib",
+    "/Users/craigmiller/Development/Libraries/ajax-api/build",
+    "/Users/craigmiller/Development/Libraries/ajax-api/.yalc"
   ]
 }

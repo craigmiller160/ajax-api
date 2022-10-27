@@ -19,15 +19,15 @@
     "jsx": "react",
     "declaration": true,
     "module": "es2015",
-    "outDir": "/home/craig/Development/Libraries/ajax-api/lib"
+    "outDir": "/Users/craigmiller/Development/Libraries/ajax-api/lib"
   },
   "include": [
-    "/home/craig/Development/Libraries/ajax-api/src/**/*"
+    "/Users/craigmiller/Development/Libraries/ajax-api/src/**/*"
   ],
   "exclude": [
-    "/home/craig/Development/Libraries/ajax-api/node_modules",
-    "/home/craig/Development/Libraries/ajax-api/lib",
-    "/home/craig/Development/Libraries/ajax-api/build",
-    "/home/craig/Development/Libraries/ajax-api/.yalc"
+    "/Users/craigmiller/Development/Libraries/ajax-api/node_modules",
+    "/Users/craigmiller/Development/Libraries/ajax-api/lib",
+    "/Users/craigmiller/Development/Libraries/ajax-api/build",
+    "/Users/craigmiller/Development/Libraries/ajax-api/.yalc"
   ]
 }
