@@ -1,5 +1,4 @@
 {
-  "version": 3,
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -21,13 +20,13 @@
     "module": "es2015"
   },
   "include": [
-    "/Users/craigmiller/Development/Libraries/ajax-api/src/**/*",
-    "/Users/craigmiller/Development/Libraries/ajax-api/test/**/*"
+    "./src/**/*",
+    "./test/**/*"
   ],
   "exclude": [
-    "/Users/craigmiller/Development/Libraries/ajax-api/node_modules",
-    "/Users/craigmiller/Development/Libraries/ajax-api/lib",
-    "/Users/craigmiller/Development/Libraries/ajax-api/build",
-    "/Users/craigmiller/Development/Libraries/ajax-api/.yalc"
+    "./node_modules",
+    "./lib",
+    "./build",
+    "./.yalc"
   ]
 }
