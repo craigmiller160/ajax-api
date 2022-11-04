@@ -17,12 +17,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react",
-    "declaration": false,
-    "module": "es2015"
+    "declaration": true,
+    "module": "es2015",
+    "outDir": "/Users/craigmiller/Development/Libraries/ajax-api/lib"
   },
   "include": [
-    "/Users/craigmiller/Development/Libraries/ajax-api/src/**/*",
-    "/Users/craigmiller/Development/Libraries/ajax-api/test/**/*"
+    "/Users/craigmiller/Development/Libraries/ajax-api/src/**/*"
   ],
   "exclude": [
     "/Users/craigmiller/Development/Libraries/ajax-api/node_modules",
