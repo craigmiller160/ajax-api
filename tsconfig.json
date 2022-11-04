@@ -17,7 +17,8 @@
     "isolatedModules": true,
     "jsx": "react",
     "declaration": false,
-    "module": "es2015"
+    "module": "es2015",
+    "outDir": "./lib"
   },
   "include": [
     "./src/**/*",
