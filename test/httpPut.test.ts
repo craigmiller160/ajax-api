@@ -18,6 +18,7 @@ type BodyType = typeof body;
 describe('HTTP PUT', () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
+		localStorage.clear();
 	});
 	it('makes successful request without CSRF', async () => {
 		const api = createApi({

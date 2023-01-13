@@ -13,6 +13,7 @@ const message = 'The message';
 describe('HTTP DELETE', () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
+		localStorage.clear();
 	});
 	it('makes successful request without CSRF', async () => {
 		const api = createApi({

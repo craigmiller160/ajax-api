@@ -10,6 +10,7 @@ const message = 'The message';
 describe('HTTP GET', () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
+		localStorage.clear();
 	});
 	it('makes successful request', async () => {
 		const api = createApi({

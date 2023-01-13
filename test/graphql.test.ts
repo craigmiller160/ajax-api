@@ -46,6 +46,7 @@ const graphqlErrorMessage = 'First error\nSecond error';
 describe('graphql', () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
+		localStorage.clear();
 	});
 	it('makes successful request without CSRF', async () => {
 		const api = createApi({
