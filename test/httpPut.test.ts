@@ -4,6 +4,10 @@ import { createApi } from '../src';
 import { CSRF_HEADER } from '../src/utils/csrfConstants';
 import CsrfError from '../src/errors/CsrfError';
 import { mockCsrfPreflight, mockCsrfToken } from '../src/test-utils';
+import {
+	AUTHORIZATION_HEADER,
+	BEARER_TOKEN_KEY
+} from '../src/utils/commonConstants';
 
 const baseURL = '/base';
 const uri = '/foo/bar';
@@ -18,6 +22,7 @@ type BodyType = typeof body;
 describe('HTTP PUT', () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
+		localStorage.clear();
 	});
 	it('makes successful request without CSRF', async () => {
 		const api = createApi({
@@ -25,6 +30,27 @@ describe('HTTP PUT', () => {
 		});
 		const mockApi = new MockAdapter(api.instance);
 		mockApi.onPut(uri, body).reply(200, 'Success');
+		const res = await api.put<string, BodyType>({
+			uri,
+			body
+		});
+		expect(res.status).toEqual(200);
+		expect(res.data).toEqual('Success');
+	});
+
+	it('makes successful request with localStorage token', async () => {
+		const token = 'TheToken';
+		localStorage.setItem(BEARER_TOKEN_KEY, token);
+		const api = createApi({
+			baseURL
+		});
+		const mockApi = new MockAdapter(api.instance);
+		mockApi.onPut(uri, body).reply((config) => {
+			expect(config.headers?.[AUTHORIZATION_HEADER]).toEqual(
+				`Bearer ${token}`
+			);
+			return [200, 'Success'];
+		});
 		const res = await api.put<string, BodyType>({
 			uri,
 			body

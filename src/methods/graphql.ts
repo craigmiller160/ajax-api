@@ -2,7 +2,11 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { customizeError, ErrorHandler } from '../core/errorHandling';
 import { GraphQLQueryResponse, GraphQLRequestConfig } from '../types';
 import GraphQLError from '../errors/GraphQLError';
-import { CONTENT_TYPE_HEADER } from '../utils/commonConstants';
+import {
+	AUTHORIZATION_HEADER,
+	BEARER_TOKEN_KEY,
+	CONTENT_TYPE_HEADER
+} from '../utils/commonConstants';
 import {
 	DEFAULT_GRAPHQL_URI,
 	GRAPHQL_CONTENT_TYPE
@@ -16,11 +20,15 @@ export const graphql =
 	<R>(
 		req: GraphQLRequestConfig
 	): Promise<AxiosResponse<GraphQLQueryResponse<R>>> => {
+		const authHeader = localStorage.getItem(BEARER_TOKEN_KEY)
+			? `Bearer ${localStorage.getItem(BEARER_TOKEN_KEY)}`
+			: '';
 		const config: AxiosRequestConfig = {
 			...(req.config ?? {}),
 			headers: {
 				...(req.config?.headers ?? {}),
-				[CONTENT_TYPE_HEADER]: GRAPHQL_CONTENT_TYPE
+				[CONTENT_TYPE_HEADER]: GRAPHQL_CONTENT_TYPE,
+				[AUTHORIZATION_HEADER]: authHeader
 			}
 		};
 

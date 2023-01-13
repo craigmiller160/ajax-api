@@ -63,3 +63,7 @@ The HTTP POST/PUT take the same set of arguments:
 | `config` | No | The `AxiosRequestConfig`. HTTP headers and other options can be configured here. |
 | `errorMsg` | No | If a `defaultErrorHandler` was set, this message will be passed to it if an error occurs. |
 | `suppressError` | No | If a `defaultErrorHandler` was set, this function can override its behavior and prevent it from being called. See the docs on Error Handling for more details. |
+
+## Bearer Tokens
+
+By default, ajaxApi will check `localStorage` for a property called `craigmiller160AjaxApiBearerToken`. If one is present, it will be set as the `Authorization` header.

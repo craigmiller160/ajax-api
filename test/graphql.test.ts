@@ -5,6 +5,7 @@ import { GraphQLQueryResponse } from '../src/types';
 import CsrfError from '../src/errors/CsrfError';
 import GraphQLError from '../src/errors/GraphQLError';
 import { mockAndValidateGraphQL, mockCsrfPreflight } from '../src/test-utils';
+import { BEARER_TOKEN_KEY } from '../src/utils/commonConstants';
 
 const baseURL = '/base';
 const graphqlUri = '/graphql';
@@ -46,6 +47,7 @@ const graphqlErrorMessage = 'First error\nSecond error';
 describe('graphql', () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
+		localStorage.clear();
 	});
 	it('makes successful request without CSRF', async () => {
 		const api = createApi({
@@ -56,6 +58,26 @@ describe('graphql', () => {
 			mockApi,
 			payload,
 			responseData: successResponse
+		});
+		const res = await api.graphql<ResponseDataType>({
+			payload
+		});
+		expect(res.status).toEqual(200);
+		expect(res.data).toEqual(successResponse);
+	});
+
+	it('makes successful request with localStorage token', async () => {
+		const token = 'TheToken';
+		localStorage.setItem(BEARER_TOKEN_KEY, token);
+		const api = createApi({
+			baseURL
+		});
+		const mockApi = new MockAdapter(api.instance);
+		mockAndValidateGraphQL<ResponseDataType>({
+			mockApi,
+			payload,
+			responseData: successResponse,
+			bearerToken: token
 		});
 		const res = await api.graphql<ResponseDataType>({
 			payload
