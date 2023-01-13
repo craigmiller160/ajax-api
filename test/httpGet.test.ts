@@ -24,6 +24,10 @@ describe('HTTP GET', () => {
 		expect(res.data).toEqual('Success');
 	});
 
+	it('makes successful request with localStorage token', async () => {
+		throw new Error();
+	});
+
 	it('makes request with 500 error and error handler', async () => {
 		const api = createApi({
 			baseURL,

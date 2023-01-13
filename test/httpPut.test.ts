@@ -33,6 +33,10 @@ describe('HTTP PUT', () => {
 		expect(res.data).toEqual('Success');
 	});
 
+	it('makes successful request with localStorage token', async () => {
+		throw new Error();
+	});
+
 	it('makes successful request with CSRF', async () => {
 		const api = createApi({
 			baseURL,
