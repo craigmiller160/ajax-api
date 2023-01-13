@@ -66,7 +66,23 @@ describe('graphql', () => {
 	});
 
 	it('makes successful request with localStorage token', async () => {
-		throw new Error();
+		const token = 'TheToken';
+		localStorage.setItem('craigmiller160AjaxApiBearerToken', token);
+		const api = createApi({
+			baseURL
+		});
+		const mockApi = new MockAdapter(api.instance);
+		mockAndValidateGraphQL<ResponseDataType>({
+			mockApi,
+			payload,
+			responseData: successResponse,
+			bearerToken: token
+		});
+		const res = await api.graphql<ResponseDataType>({
+			payload
+		});
+		expect(res.status).toEqual(200);
+		expect(res.data).toEqual(successResponse);
 	});
 
 	it('makes successful request without CSRF with overrideUri', async () => {

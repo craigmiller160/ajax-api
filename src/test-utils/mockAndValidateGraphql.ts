@@ -6,6 +6,7 @@ export interface GraphQLMockConfig<R> {
 	payload: string;
 	responseData?: GraphQLQueryResponse<R>;
 	overrideUri?: string;
+	bearerToken?: string;
 }
 
 export const mockAndValidateGraphQL = <R>(
@@ -14,6 +15,13 @@ export const mockAndValidateGraphQL = <R>(
 	const uri = mockConfig.overrideUri ?? '/graphql';
 	mockConfig.mockApi.onPost(uri).replyOnce((config) => {
 		expect(config.data).stringsEqualIgnoreWhitespace(mockConfig.payload);
+		if (mockConfig.bearerToken) {
+			expect(config.headers).toEqual(
+				expect.objectContaining({
+					Authorization: `Bearer ${mockConfig.bearerToken}`
+				})
+			);
+		}
 		return [200, mockConfig.responseData];
 	});
 };
