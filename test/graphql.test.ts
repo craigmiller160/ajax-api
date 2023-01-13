@@ -5,6 +5,7 @@ import { GraphQLQueryResponse } from '../src/types';
 import CsrfError from '../src/errors/CsrfError';
 import GraphQLError from '../src/errors/GraphQLError';
 import { mockAndValidateGraphQL, mockCsrfPreflight } from '../src/test-utils';
+import { BEARER_TOKEN_KEY } from '../src/utils/commonConstants';
 
 const baseURL = '/base';
 const graphqlUri = '/graphql';
@@ -67,7 +68,7 @@ describe('graphql', () => {
 
 	it('makes successful request with localStorage token', async () => {
 		const token = 'TheToken';
-		localStorage.setItem('craigmiller160AjaxApiBearerToken', token);
+		localStorage.setItem(BEARER_TOKEN_KEY, token);
 		const api = createApi({
 			baseURL
 		});

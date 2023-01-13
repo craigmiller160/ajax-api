@@ -4,6 +4,10 @@ import { createApi } from '../src';
 import { CSRF_HEADER } from '../src/utils/csrfConstants';
 import CsrfError from '../src/errors/CsrfError';
 import { mockCsrfPreflight, mockCsrfToken } from '../src/test-utils';
+import {
+	AUTHORIZATION_HEADER,
+	BEARER_TOKEN_KEY
+} from '../src/utils/commonConstants';
 
 const baseURL = '/base';
 const uri = '/foo/bar';
@@ -29,7 +33,23 @@ describe('HTTP DELETE', () => {
 	});
 
 	it('makes successful request with localStorage token', async () => {
-		throw new Error();
+		const token = 'TheToken';
+		localStorage.setItem(BEARER_TOKEN_KEY, token);
+		const api = createApi({
+			baseURL
+		});
+		const mockApi = new MockAdapter(api.instance);
+		mockApi.onDelete(uri).reply((config) => {
+			expect(config.headers?.[AUTHORIZATION_HEADER]).toEqual(
+				`Bearer ${token}`
+			);
+			return [200, 'Success'];
+		});
+		const res = await api.delete<string>({
+			uri
+		});
+		expect(res.status).toEqual(200);
+		expect(res.data).toEqual('Success');
 	});
 
 	it('makes successful request with body', async () => {
