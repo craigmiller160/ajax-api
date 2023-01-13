@@ -64,6 +64,10 @@ describe('graphql', () => {
 		expect(res.data).toEqual(successResponse);
 	});
 
+	it('makes successful request with localStorage token', async () => {
+		throw new Error();
+	});
+
 	it('makes successful request without CSRF with overrideUri', async () => {
 		const overrideUri = '/foo/bar';
 		const api = createApi({
