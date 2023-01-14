@@ -12,6 +12,7 @@ export { default as GraphQLError } from './errors/GraphQLError';
 export { default as CsrfError } from './errors/CsrfError';
 export { isAxiosError } from './core/errorHandling';
 export * from './types';
+export { BEARER_TOKEN_KEY } from './utils/commonConstants';
 
 export const createApi = (config?: ApiConfig): AjaxApi => {
 	const baseURL = config?.baseURL ?? '/';
