@@ -34,15 +34,9 @@ devDependencies:
   '@craigmiller160/prettier-config':
     specifier: ^1.0.2
     version: 1.0.2
-  '@types/axios-mock-adapter':
-    specifier: ^1.10.0
-    version: 1.10.0(axios@1.4.0)
   axios-mock-adapter:
-    specifier: ^1.19.0
-    version: 1.21.2(axios@1.4.0)
-  core-js:
-    specifier: ^3.21.0
-    version: 3.26.0
+    specifier: ^1.21.5
+    version: 1.21.5(axios@1.4.0)
   husky:
     specifier: ^7.0.4
     version: 7.0.4
@@ -1872,15 +1866,6 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
-  /@types/axios-mock-adapter@1.10.0(axios@1.4.0):
-    resolution: {integrity: sha512-Govyvy3cr8hsR6DcCoBjVMQhYyzkHdfU/hMgBw6ONOFuTrZTDxdE/rBR7Sz3qsGtVZABSK8/2rDekp5UwZ/V8A==}
-    deprecated: This is a stub types definition for axios-mock-adapter (https://github.com/ctimmerm/axios-mock-adapter). axios-mock-adapter provides its own type definitions, so you don't need @types/axios-mock-adapter installed!
-    dependencies:
-      axios-mock-adapter: 1.21.2(axios@1.4.0)
-    transitivePeerDependencies:
-      - axios
-    dev: true
-
   /@types/babel__core@7.1.19:
     resolution: {integrity: sha512-WEOTgRsbYkvA/KCsDwVEGkd7WAr1e3g31VHQ8zy5gul/V1qKullU/BU5I68X5v7V3GnB9eotmom4v5a5gjxorw==}
     dependencies:
@@ -2238,8 +2223,8 @@ packages:
   /asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  /axios-mock-adapter@1.21.2(axios@1.4.0):
-    resolution: {integrity: sha512-jzyNxU3JzB2XVhplZboUcF0YDs7xuExzoRSHXPHr+UQajaGmcTqvkkUADgkVI2WkGlpZ1zZlMVdcTMU0ejV8zQ==}
+  /axios-mock-adapter@1.21.5(axios@1.4.0):
+    resolution: {integrity: sha512-5NI1V/VK+8+JeTF8niqOowuysA4b8mGzdlMN/QnTnoXbYh4HZSNiopsDclN2g/m85+G++IrEtUdZaQ3GnaMsSA==}
     peerDependencies:
       axios: '>= 0.17.0'
     dependencies:
@@ -2558,11 +2543,6 @@ packages:
     resolution: {integrity: sha512-piOX9Go+Z4f9ZiBFLnZ5VrOpBl0h7IGCkiFUN11QTe6LjAvOT3ifL/5TdoizMh99hcGy5SoLyWbapIY/PIb/3A==}
     dependencies:
       browserslist: 4.21.4
-    dev: true
-
-  /core-js@3.26.0:
-    resolution: {integrity: sha512-+DkDrhoR4Y0PxDz6rurahuB+I45OsEUv8E1maPTB6OuHRohMMcznBq9TMpdpDMm/hUPob/mJJS3PqgbHpMTQgw==}
-    requiresBuild: true
     dev: true
 
   /cross-env@7.0.3:
