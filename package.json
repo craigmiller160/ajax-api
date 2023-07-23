@@ -1,6 +1,6 @@
 {
   "name": "@craigmiller160/ajax-api",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "lib/index.js",
   "sideEffects": false,
   "publishConfig": {
@@ -15,12 +15,12 @@
   "scripts": {
     "lint": "craig-lint",
     "test": "craig-test",
-    "build": "yarn lint && yarn test && yarn forceBuild",
+    "build": "npm run lint && npm run test && npm run forceBuild",
     "forceBuild": "rm -rf lib && tsc",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{ts,tsx}": "yarn lint"
+    "*.{ts,tsx}": "craig-lint"
   },
   "devDependencies": {
     "@craigmiller160/babel-config": "^1.1.0",
