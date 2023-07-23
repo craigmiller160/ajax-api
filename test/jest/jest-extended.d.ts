@@ -5,5 +5,9 @@ declare global {
 		interface Matchers<R> {
 			stringsEqualIgnoreWhitespace(text: string): R;
 		}
+
+		interface JestMatchers<R> {
+			stringsEqualIgnoreWhitespace(text: string): R;
+		}
 	}
 }
