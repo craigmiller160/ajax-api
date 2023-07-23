@@ -22,6 +22,11 @@
   "lint-staged": {
     "*.{ts,tsx}": "craig-lint"
   },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": ["jest"]
+    }
+  },
   "devDependencies": {
     "@craigmiller160/babel-config": "^1.1.1",
     "@craigmiller160/config-merge": "^1.0.1",
