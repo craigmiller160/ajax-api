@@ -1,1 +1,1 @@
-import '@craigmiller160/jest-matchers-common';
+import './jest/stringsEqualIgnoreWhitespace';
