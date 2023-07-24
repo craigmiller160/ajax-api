@@ -1,13 +1,13 @@
 {
   "name": "@craigmiller160/ajax-api",
   "version": "2.2.0-beta",
-  "main": "./lib/esm/index.js",
+  "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/types/index.d.ts",
   "exports": {
     ".": {
       "import": "./lib/esm/index.js",
-      "require": "./lib/esm/index.js"
+      "require": "./lib/cjs/index.js"
     }
   },
   "sideEffects": false,
