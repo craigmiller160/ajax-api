@@ -1,6 +1,6 @@
 {
   "name": "@craigmiller160/ajax-api",
-  "version": "2.1.2",
+  "version": "2.2.0-beta",
   "main": "lib/index.js",
   "sideEffects": false,
   "publishConfig": {
