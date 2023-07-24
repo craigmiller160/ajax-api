@@ -6,6 +6,4 @@ yarn-error.log
 .yalc
 yalc.lock
 coverage
-cjs
-esm
-types
+lib

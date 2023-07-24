@@ -16,7 +16,7 @@
     "lint": "craig-lint",
     "test": "craig-test",
     "build": "npm run lint && npm run test && npm run forceBuild",
-    "forceBuild": "rm -rf lib && craig-multi-module && tsc --declaration --emitDeclarationOnly --outDir ./lib/ypes",
+    "forceBuild": "rm -rf lib && craig-multi-module && tsc --declaration --emitDeclarationOnly --outDir ./lib/types",
     "prepare": "husky install"
   },
   "lint-staged": {
