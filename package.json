@@ -9,9 +9,9 @@
       "import": "./lib/esm/index.js",
       "require": "./lib/esm/index.js"
     },
-    "./test-utils/": {
-      "import": "./lib/esm/test-utils/",
-      "require": "./lib/cjs/test-utils/"
+    "./test-utils/*": {
+      "import": "./lib/esm/test-utils/*",
+      "require": "./lib/cjs/test-utils/*"
     }
   },
   "sideEffects": false,
