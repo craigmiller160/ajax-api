@@ -12,7 +12,7 @@ export * from './test-utils';
 export { default as GraphQLError } from './errors/GraphQLError';
 export { default as CsrfError } from './errors/CsrfError';
 export { isAxiosError } from './core/errorHandling';
-export * from './types';
+export type * from './types';
 export { BEARER_TOKEN_KEY } from './utils/commonConstants';
 
 export const createApi = (config?: ApiConfig): AjaxApi => {
