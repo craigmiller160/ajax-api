@@ -1,7 +1,15 @@
 {
   "name": "@craigmiller160/ajax-api",
   "version": "2.2.0-beta",
-  "main": "lib/index.js",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    }
+  },
   "sideEffects": false,
   "publishConfig": {
     "registry": "https://nexus-craigmiller160.ddns.net/repository/npm-private/"
@@ -11,7 +19,6 @@
     "lib",
     ".yalc"
   ],
-  "types": "lib/index.d.ts",
   "scripts": {
     "lint": "craig-lint",
     "test": "craig-test",
