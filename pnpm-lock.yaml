@@ -34,6 +34,9 @@ devDependencies:
   '@craigmiller160/prettier-config':
     specifier: ^1.0.2
     version: 1.0.2
+  '@types/jest':
+    specifier: ^29.5.3
+    version: 29.5.3
   axios-mock-adapter:
     specifier: ^1.21.5
     version: 1.21.5(axios@1.4.0)
@@ -1915,6 +1918,13 @@ packages:
     resolution: {integrity: sha512-c3mAZEuK0lvBp8tmuL74XRKn1+y2dcwOUpH7x4WrF6gk1GIgiluDRgMYQtw2OFcBvAJWlt6ASU3tSqxp0Uu0Aw==}
     dependencies:
       '@types/istanbul-lib-report': 3.0.0
+    dev: true
+
+  /@types/jest@29.5.3:
+    resolution: {integrity: sha512-1Nq7YrO/vJE/FYnqYyw0FS8LdrjExSgIiHyKg7xPpn+yi8Q4huZryKnkJatN1ZRH89Kw2v33/8ZMB7DuZeSLlA==}
+    dependencies:
+      expect: 29.6.1
+      pretty-format: 29.6.1
     dev: true
 
   /@types/jsdom@20.0.1:
