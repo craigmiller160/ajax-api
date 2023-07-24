@@ -19,10 +19,8 @@ const createCsrfHandlingInterceptor =
 					}
 				})
 				.then((res: AxiosResponse) => {
-					config.headers = {
-						...(config.headers ?? {}),
-						[CSRF_HEADER]: res.headers[CSRF_HEADER]
-					};
+					const newConfig: InternalAxiosRequestConfig = { ...config };
+					newConfig.headers[CSRF_HEADER] = res.headers[CSRF_HEADER];
 					return config;
 				})
 				.catch((ex) => {
