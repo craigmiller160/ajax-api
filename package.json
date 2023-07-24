@@ -36,6 +36,9 @@
       ]
     }
   },
+  "peerDependencies": {
+    "axios": "^1.4.0"
+  },
   "devDependencies": {
     "@craigmiller160/babel-config": "^1.1.1",
     "@craigmiller160/config-merge": "^1.0.1",
