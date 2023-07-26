@@ -7,7 +7,6 @@ import { post } from './methods/post';
 import { put } from './methods/put';
 import { doDelete } from './methods/delete';
 import { graphql } from './methods/graphql';
-export * from './test-utils';
 
 export { default as GraphQLError } from './errors/GraphQLError';
 export { default as CsrfError } from './errors/CsrfError';
