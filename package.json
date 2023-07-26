@@ -25,7 +25,8 @@
   "scripts": {
     "lint": "craig-lint",
     "test": "craig-test",
-    "build": "npm run lint && npm run test && npm run forceBuild",
+    "build": "npm run lint && npm run test && npm run typeCheck && npm run forceBuild",
+    "typeCheck": "tsc --noEmit",
     "forceBuild": "rm -rf lib && craig-multi-module && tsc --declaration --emitDeclarationOnly --outDir ./lib/types",
     "prepare": "husky install"
   },
@@ -53,8 +54,10 @@
     "@craigmiller160/prettier-config": "^1.0.2",
     "@craigmiller160/swc-config": "1.0.0-beta.8",
     "@swc/cli": "^0.1.62",
+    "@swc/jest": "^0.2.27",
     "@types/jest": "^29.5.3",
     "axios-mock-adapter": "^1.21.5",
+    "cross-spawn": "^7.0.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
     "regenerator-runtime": "^0.13.9",

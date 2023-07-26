@@ -40,12 +40,18 @@ devDependencies:
   '@swc/cli':
     specifier: ^0.1.62
     version: 0.1.62(@swc/core@1.3.70)
+  '@swc/jest':
+    specifier: ^0.2.27
+    version: 0.2.27(@swc/core@1.3.70)
   '@types/jest':
     specifier: ^29.5.3
     version: 29.5.3
   axios-mock-adapter:
     specifier: ^1.21.5
     version: 1.21.5(axios@1.4.0)
+  cross-spawn:
+    specifier: ^7.0.3
+    version: 7.0.3
   husky:
     specifier: ^7.0.4
     version: 7.0.4
@@ -1657,7 +1663,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 18.11.7
+      '@types/node': 20.4.4
       '@types/yargs': 16.0.4
       chalk: 4.1.2
     dev: true
