@@ -22,7 +22,10 @@
     "lib",
     ".yalc"
   ],
-  "scripts": {},
+  "scripts": {
+    "postinstall": "c-init",
+    "build": "c-validate && c-build-lib"
+  },
   "peerDependencies": {
     "axios": "^1.4.0"
   },
