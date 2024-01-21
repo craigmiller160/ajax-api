@@ -5,7 +5,7 @@ import { createApi } from '../src';
 import { GraphQLQueryResponse } from '../src/types';
 import CsrfError from '../src/errors/CsrfError';
 import GraphQLError from '../src/errors/GraphQLError';
-import { mockAndValidateGraphQL, mockCsrfPreflight } from '../src/test-utils';
+import { mockAndValidateGraphQL, mockCsrfPreflight } from '../old/test-utils';
 import { BEARER_TOKEN_KEY } from '../src/utils/commonConstants';
 
 const baseURL = '/base';
@@ -132,7 +132,7 @@ describe('graphql', () => {
 			useCsrf: true,
 			defaultErrorHandler
 		});
-		new MockAdapter(api.instance); // eslint-disable-line no-new
+		new MockAdapter(api.instance);
 		try {
 			await api.graphql<ResponseDataType>({
 				payload,
@@ -208,9 +208,9 @@ describe('graphql', () => {
 				errorCustomizer: message
 			});
 		} catch (ex) {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
 			expect(((ex as Error).cause as any).response).toBeUndefined();
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
 			expect(((ex as Error).cause as any).message).toEqual('Dying');
 			expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex);
 			return;

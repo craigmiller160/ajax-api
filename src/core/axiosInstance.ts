@@ -20,11 +20,15 @@ const createCsrfHandlingInterceptor =
 				})
 				.then((res: AxiosResponse) => {
 					const newConfig: InternalAxiosRequestConfig = { ...config };
+					// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 					newConfig.headers[CSRF_HEADER] = res.headers[CSRF_HEADER];
 					return config;
 				})
 				.catch((ex) => {
-					throw new CsrfError('Request failed preflight', ex);
+					throw new CsrfError(
+						'Request failed preflight',
+						ex as Error
+					);
 				});
 		}
 		return config;
