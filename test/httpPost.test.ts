@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 import { createApi } from '../src';
 import { CSRF_HEADER } from '../src/utils/csrfConstants';
 import CsrfError from '../src/errors/CsrfError';
-import { mockCsrfPreflight, mockCsrfToken } from '../old/test-utils';
+import { mockCsrfPreflight, mockCsrfToken } from '../src/test-utils';
 import {
 	AUTHORIZATION_HEADER,
 	BEARER_TOKEN_KEY

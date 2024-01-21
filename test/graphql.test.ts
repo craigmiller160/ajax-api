@@ -5,7 +5,7 @@ import { createApi } from '../src';
 import { GraphQLQueryResponse } from '../src/types';
 import CsrfError from '../src/errors/CsrfError';
 import GraphQLError from '../src/errors/GraphQLError';
-import { mockAndValidateGraphQL, mockCsrfPreflight } from '../old/test-utils';
+import { mockAndValidateGraphQL, mockCsrfPreflight } from '../src/test-utils';
 import { BEARER_TOKEN_KEY } from '../src/utils/commonConstants';
 
 const baseURL = '/base';
