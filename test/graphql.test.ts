@@ -1,3 +1,4 @@
+import { expect, beforeEach, describe, it, vi } from 'vitest';
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
@@ -9,7 +10,7 @@ import { BEARER_TOKEN_KEY } from '../src/utils/commonConstants';
 
 const baseURL = '/base';
 const graphqlUri = '/graphql';
-const defaultErrorHandler = jest.fn();
+const defaultErrorHandler = vi.fn();
 const message = 'The message';
 const payload = `
     query: {
@@ -46,7 +47,7 @@ const graphqlErrorMessage = 'First error\nSecond error';
 
 describe('graphql', () => {
 	beforeEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 		localStorage.clear();
 	});
 	it('makes successful request without CSRF', async () => {
@@ -131,7 +132,7 @@ describe('graphql', () => {
 			useCsrf: true,
 			defaultErrorHandler
 		});
-		new MockAdapter(api.instance); // eslint-disable-line no-new
+		new MockAdapter(api.instance);
 		try {
 			await api.graphql<ResponseDataType>({
 				payload,
@@ -207,9 +208,9 @@ describe('graphql', () => {
 				errorCustomizer: message
 			});
 		} catch (ex) {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
 			expect(((ex as Error).cause as any).response).toBeUndefined();
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
 			expect(((ex as Error).cause as any).message).toEqual('Dying');
 			expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex);
 			return;
