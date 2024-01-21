@@ -33,6 +33,4 @@ const matchers = {
 	}
 };
 
-if (expect) {
-	expect.extend(matchers);
-}
+expect.extend(matchers);

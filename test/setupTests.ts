@@ -1,1 +1,1 @@
-import '../old/test-utils/stringsEqualIgnoreWhitespace';
+import '../src/test-utils/stringsEqualIgnoreWhitespace';
