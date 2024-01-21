@@ -2,6 +2,7 @@ import { defineConfig } from '@craigmiller160/js-config/configs/vite/vite.config
 
 export default defineConfig({
 	test: {
+		environment: 'jsdom',
 		setupFiles: ['./setupTests.ts']
 	}
 });
