@@ -1,3 +1,7 @@
 import { defineConfig } from '@craigmiller160/js-config/configs/vite/vite.config.mjs';
 
-export default defineConfig();
+export default defineConfig({
+	test: {
+		setupFiles: ['./setupTests.ts']
+	}
+});
