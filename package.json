@@ -1,6 +1,6 @@
 {
   "name": "@craigmiller160/ajax-api",
-  "version": "2.2.0-beta",
+  "version": "2.2.0",
   "exports": {
     ".": {
       "types": "./lib/types/index.d.ts",
