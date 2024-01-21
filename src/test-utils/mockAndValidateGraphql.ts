@@ -1,5 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
 import { GraphQLQueryResponse } from '../types';
+import { expect } from 'vitest';
 
 export interface GraphQLMockConfig<R> {
 	mockApi: MockAdapter;

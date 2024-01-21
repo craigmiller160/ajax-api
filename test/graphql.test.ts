@@ -1,3 +1,4 @@
+import { expect, beforeEach, describe, it, vi } from 'vitest';
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
@@ -9,7 +10,7 @@ import { BEARER_TOKEN_KEY } from '../src/utils/commonConstants';
 
 const baseURL = '/base';
 const graphqlUri = '/graphql';
-const defaultErrorHandler = jest.fn();
+const defaultErrorHandler = vi.fn();
 const message = 'The message';
 const payload = `
     query: {
@@ -46,7 +47,7 @@ const graphqlErrorMessage = 'First error\nSecond error';
 
 describe('graphql', () => {
 	beforeEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 		localStorage.clear();
 	});
 	it('makes successful request without CSRF', async () => {

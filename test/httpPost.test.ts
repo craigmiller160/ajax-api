@@ -1,3 +1,4 @@
+import { describe, beforeEach, it, expect, vi } from 'vitest';
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
@@ -11,7 +12,7 @@ import {
 
 const baseURL = '/base';
 const uri = '/foo/bar';
-const defaultErrorHandler = jest.fn();
+const defaultErrorHandler = vi.fn();
 const message = 'The message';
 const body = {
 	one: 'two',
@@ -21,7 +22,7 @@ type BodyType = typeof body;
 
 describe('HTTP POST', () => {
 	beforeEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 		localStorage.clear();
 	});
 	it('makes successful request without CSRF', async () => {

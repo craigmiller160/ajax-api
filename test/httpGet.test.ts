@@ -1,3 +1,4 @@
+import { expect, beforeEach, describe, it, vi } from 'vitest';
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
@@ -8,12 +9,12 @@ import {
 
 const baseURL = '/base';
 const uri = '/foo/bar';
-const defaultErrorHandler = jest.fn();
+const defaultErrorHandler = vi.fn();
 const message = 'The message';
 
 describe('HTTP GET', () => {
 	beforeEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 		localStorage.clear();
 	});
 	it('makes successful request', async () => {
