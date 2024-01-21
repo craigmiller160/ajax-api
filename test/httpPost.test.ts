@@ -1,3 +1,4 @@
+import { describe, beforeEach, it, expect, vi } from 'vitest';
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
@@ -11,7 +12,7 @@ import {
 
 const baseURL = '/base';
 const uri = '/foo/bar';
-const defaultErrorHandler = jest.fn();
+const defaultErrorHandler = vi.fn();
 const message = 'The message';
 const body = {
 	one: 'two',
@@ -21,7 +22,7 @@ type BodyType = typeof body;
 
 describe('HTTP POST', () => {
 	beforeEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 		localStorage.clear();
 	});
 	it('makes successful request without CSRF', async () => {
@@ -84,7 +85,7 @@ describe('HTTP POST', () => {
 			useCsrf: true,
 			defaultErrorHandler
 		});
-		new MockAdapter(api.instance); // eslint-disable-line no-new
+		new MockAdapter(api.instance);
 		try {
 			await api.post<string, BodyType>({
 				uri,
@@ -153,7 +154,7 @@ describe('HTTP POST', () => {
 			baseURL,
 			defaultErrorHandler
 		});
-		new MockAdapter(api.instance); // eslint-disable-line no-new
+		new MockAdapter(api.instance);
 		api.instance.interceptors.request.use(() => {
 			throw new Error('Dying');
 		});
@@ -164,9 +165,9 @@ describe('HTTP POST', () => {
 				errorCustomizer: message
 			});
 		} catch (ex) {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
 			expect(((ex as Error).cause as any).response).toBeUndefined();
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
 			expect(((ex as Error).cause as any).message).toEqual('Dying');
 			expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex);
 			return;

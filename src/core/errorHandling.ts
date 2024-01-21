@@ -3,6 +3,7 @@ import { BaseRequestConfig, DefaultErrorHandler } from '../types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const isAxiosError = <R>(ex: any): ex is AxiosError<R> =>
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 	ex.response !== undefined && ex.response !== null;
 
 export const customizeError = (

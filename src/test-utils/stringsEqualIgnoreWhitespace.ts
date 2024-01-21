@@ -1,3 +1,5 @@
+import { expect } from 'vitest';
+
 const matchers = {
 	stringsEqualIgnoreWhitespace(received: string, expected: string) {
 		// Type checks to support JavaScript
@@ -31,6 +33,4 @@ const matchers = {
 	}
 };
 
-if (expect) {
-	expect.extend(matchers);
-}
+expect.extend(matchers);

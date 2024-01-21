@@ -1,3 +1,4 @@
+import { expect, beforeEach, describe, it, vi } from 'vitest';
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosError } from 'axios';
 import { createApi } from '../src';
@@ -11,12 +12,12 @@ import {
 
 const baseURL = '/base';
 const uri = '/foo/bar';
-const defaultErrorHandler = jest.fn();
+const defaultErrorHandler = vi.fn();
 const message = 'The message';
 
 describe('HTTP DELETE', () => {
 	beforeEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 		localStorage.clear();
 	});
 	it('makes successful request without CSRF', async () => {
@@ -94,7 +95,7 @@ describe('HTTP DELETE', () => {
 			useCsrf: true,
 			defaultErrorHandler
 		});
-		new MockAdapter(api.instance); // eslint-disable-line no-new
+		new MockAdapter(api.instance);
 		try {
 			await api.delete<string>({
 				uri,
@@ -170,9 +171,9 @@ describe('HTTP DELETE', () => {
 				errorCustomizer: message
 			});
 		} catch (ex) {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
 			expect(((ex as Error).cause as any).response).toBeUndefined();
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
 			expect(((ex as Error).cause as any).message).toEqual('Dying');
 			expect(defaultErrorHandler).toHaveBeenCalledWith(0, ex);
 			return;
