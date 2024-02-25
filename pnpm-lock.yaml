@@ -11,8 +11,8 @@ dependencies:
 
 devDependencies:
   '@craigmiller160/js-config':
-    specifier: ^1.0.4
-    version: 1.0.4(cross-env@7.0.3)(vitest@0.34.6)
+    specifier: 1.0.13
+    version: 1.0.13(cross-env@7.0.3)(vitest@0.34.6)
   axios-mock-adapter:
     specifier: ^1.21.5
     version: 1.21.5(axios@1.4.0)
@@ -63,10 +63,9 @@ packages:
     engines: {node: '>=0.1.90'}
     dev: true
 
-  /@craigmiller160/js-config@1.0.4(cross-env@7.0.3)(vitest@0.34.6):
-    resolution: {integrity: sha512-AMOrPyTHrJ7SOLLPfnOp7oxyg4RK9M+xLV/+t0Lo9ATy88puA+5s4rygOOBGKsvgzqFxLKZyiql7kQ474ghmHQ==}
+  /@craigmiller160/js-config@1.0.13(cross-env@7.0.3)(vitest@0.34.6):
+    resolution: {integrity: sha512-hIl55bGjZLwu+hl0Eqy9XRcFRJZaXyDl8+aD/9wun0I+A6kUip822CevvitRDdohXxr41/yB/dUIcf3DuLi15g==}
     hasBin: true
-    requiresBuild: true
     peerDependencies:
       '@relmify/jest-fp-ts': ^2.1.1
       cross-env: ^7.0.3
