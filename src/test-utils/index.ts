@@ -1,3 +1,3 @@
-import '../../src/test-utils/stringsEqualIgnoreWhitespace';
+import './stringsEqualIgnoreWhitespace';
 export * from './mockCsrfPreflight';
 export * from './mockAndValidateGraphql';
